@@ -1,12 +1,7 @@
 import "./App.css";
 import { Navbar } from "./components/Navbar/Navbar";
 import { Routes, Route } from "react-router-dom";
-import {  LandingPage } from "./pages/LandingPage/LandingPage";
-import { ProductPage } from "./pages/ProductPage/ProductPage";
-import { CartPage } from "./pages/CartPage/CartPage";
-import { SignUp } from "./pages/SignUpPage/SignUp";
-import { LoginPage } from "./pages/LoginPage/LoginPage";
-import { WishlistPage } from "./pages/WishlistPage/WishlistPage";
+import { LandingPage, ProductPage, CartPage, SignUp, LoginPage, WishlistPage } from './components/Routes/Routes';
 function App() {
   return (
     <div className="App">
