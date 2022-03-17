@@ -1,0 +1,21 @@
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column ;
+  height: 25rem;
+}
+.container-title{
+  color: var(--secondary-color);
+  font-size: 3rem;
+}
+
+.btn{ 
+  margin-top: 1rem;
+  cursor: pointer;
+  background-color: var(--secondary-color);
+}
+.btn-shop{
+  color: var(--primary-color);
+
+}
