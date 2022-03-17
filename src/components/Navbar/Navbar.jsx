@@ -7,7 +7,7 @@ export const Navbar = () => {
       <nav className="nav-menu">
         <h1 className="nav-menu-logo">
           <a href="#" className="text-decorations text-white">
-            gothammerce
+            Gotham Store
           </a>
         </h1>
         <div className="search">
