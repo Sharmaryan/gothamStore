@@ -3,7 +3,7 @@ import React from 'react'
 export const Navbar = () => {
   return (
     <div>
-      {" "}
+    
       <nav className="nav-menu">
         <h1 className="nav-menu-logo">
           <a href="#" className="text-decorations text-white">
@@ -42,6 +42,7 @@ export const Navbar = () => {
           </ul>
         </div>
       </nav>
+      
     </div>
   );
 }

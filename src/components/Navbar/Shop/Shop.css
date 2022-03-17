@@ -1,0 +1,17 @@
+.text-title {
+  color: var(--primary-color);
+}
+.text-btn {
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+.title {
+  text-align: center;
+  padding: 1rem 0;
+  text-transform: capitalize;
+  color: var(--secondary-color);
+}
