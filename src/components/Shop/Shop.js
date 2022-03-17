@@ -1,22 +1,16 @@
 import React from "react";
-
+import "./Shop.css";
 export const Shop = () => {
   return (
     <div>
-      <main class="container">
-        <div class="image-text">
-          <div class="text">
-            <h1 class="text-title">pick the best for your children</h1>
-          </div>
-          <button class="text-btn">
-            <a
-              href="/pages/products/products.html"
-              class="text-decorations container-btn"
-            >
-              shop now
-            </a>
-          </button>
-        </div>
+      <main className="container">
+        <h1 className="container-title">store for bibliophiles</h1>
+
+        <button class="btn btn-link">
+          <a href="#" class="btn-text-decoration btn-shop ">
+            shop now
+          </a>
+        </button>
       </main>
     </div>
   );

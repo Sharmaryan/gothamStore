@@ -1,17 +1,21 @@
-.text-title {
-  color: var(--primary-color);
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column ;
+  height: 25rem;
 }
-.text-btn {
-  padding: 0.5rem 1rem;
-  font-size: 1.1rem;
-  text-transform: uppercase;
+.container-title{
+  color: var(--secondary-color);
+  font-size: 3rem;
+}
+
+.btn{ 
   margin-top: 1rem;
   cursor: pointer;
-  font-weight: bold;
+  background-color: var(--secondary-color);
 }
-.title {
-  text-align: center;
-  padding: 1rem 0;
-  text-transform: capitalize;
-  color: var(--secondary-color);
+.btn-shop{
+  color: var(--primary-color);
+
 }
