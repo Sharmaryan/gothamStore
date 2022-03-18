@@ -1,11 +1,11 @@
 import "./Sidebar.css";
 export const SideBar = () => {
   return (
-    <aside class="sidebar">
-      <p class="filter-text">filters</p>
-      <button class="filter-btn">clear</button>
-      <div class="sidebar-sortby">
-        <div class="sortby-heading">sort by</div>
+    <aside className="sidebar">
+      <p className="filter-text">filters</p>
+      <button className="filter-btn">clear</button>
+      <div className="sidebar-sortby">
+        <div className="sortby-heading">sort by</div>
         <label className="sortby-label" htmlFor="high-to-low">
           <input type="radio" id="high-to-low" name="sortBy" />
           Price : Hight to Low
@@ -15,8 +15,8 @@ export const SideBar = () => {
           Price : Low to High
         </label>
       </div>
-      <div class="sidebar-rating">
-        <div class="rating-heading">rating</div>
+      <div className="sidebar-rating">
+        <div className="rating-heading">rating</div>
         <label className="rating-label" htmlFor="four">
           <input type="radio" id="four" name="rating" />4 star & above
         </label>
@@ -31,8 +31,8 @@ export const SideBar = () => {
         </label>
       </div>
 
-      <div class="sidebar-category">
-        <div class="category-heading">Category</div>
+      <div className="sidebar-category">
+        <div className="category-heading">Category</div>
         <label className="category-label" htmlFor="business">
           <input type="checkbox" id="business" name="business" />
           business
