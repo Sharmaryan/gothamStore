@@ -5,6 +5,8 @@ import { useProduct } from "../../context/product-context";
 import { filterByCategory } from "../../SortingAndFiltering/filterByCategory";
 
 import { sortByPrice } from "../../SortingAndFiltering/sortByPrice";
+import { sortByRating } from "../../SortingAndFiltering/sortByRating";
+import {filterByPriceRange} from '../../SortingAndFiltering/filterByPriceRange';
 
 import "./Products.css";
 
@@ -25,7 +27,8 @@ export const Products = () => {
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const { selfhelp, business, biography, spirtual, sortBy } = useProduct();
+  const { selfhelp, business, biography, spirtual, sortBy, rating, range } =
+    useProduct();
 
   const filteredProducts = filterByCategory(
     data,
@@ -36,11 +39,14 @@ export const Products = () => {
   );
   const sortedProducts = sortByPrice(sortBy, filteredProducts);
 
+  const ratedProducts = sortByRating(sortedProducts, rating);
+  const products = filterByPriceRange(ratedProducts, range);
+
   return (
     <div className="products">
       {loading && <h1>Loading...</h1>}
-      {sortedProducts &&
-        sortedProducts.map((product) => (
+      {products &&
+        products.map((product) => (
           <Product product={product} key={product._id} />
         ))}
     </div>
