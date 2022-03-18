@@ -17,7 +17,7 @@ export const Products = () => {
   const [data, setData] = useState([]);
   return (
     <div className="products">
-      <div>{data && data.map((product) => <Product product={product} />)}</div>
+      <div>{data && data.map((product) => <Product product={product} key={product._id}/>)}</div>
     </div>
   );
 };

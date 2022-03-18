@@ -1,8 +1,8 @@
 import React from "react";
 
-export const Product = ({ product: { image, name, price, _id } }) => {
+export const Product = ({ product: { image, name, price } }) => {
   return (
-    <div key={_id}>
+    <div >
       <div className="card card-vertical ">
         <img src={image} alt="" className="card-logo" />
         <p className="card-title">{name}</p>
