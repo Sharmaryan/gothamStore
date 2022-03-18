@@ -1,5 +1,25 @@
 import "./Sidebar.css";
 import { useProduct } from "../../context/product-context";
+
+const ratingFilters = [
+  {
+    rating: "4 star & above",
+    forAndId: "four",
+  },
+  {
+    rating: "3 star & above",
+    forAndId: "three",
+  },
+  {
+    rating: "2 star & above",
+    forAndId: "two",
+  },
+  {
+    rating: "1 star & above",
+    forAndId: "one",
+  },
+];
+
 export const SideBar = () => {
   const { selfhelp, business, biography, sortBy, spirtual, productsDispatch } =
     useProduct();
@@ -33,18 +53,16 @@ export const SideBar = () => {
       </div>
       <div className="sidebar-rating">
         <div className="rating-heading">rating</div>
-        <label className="rating-label" htmlFor="four">
-          <input type="radio" id="four" name="rating" />4 star & above
-        </label>
-        <label className="rating-label" htmlFor="three">
-          <input type="radio" id="three" name="rating" />3 star & above
-        </label>
-        <label className="rating-label" htmlFor="two">
-          <input type="radio" id="two" name="rating" />2 star & above
-        </label>
-        <label className="rating-label" htmlFor="one">
-          <input type="radio" id="one" name="rating" />1 star & above
-        </label>
+
+        {ratingFilters.map((ratings) => {
+          const { rating, forAndId } = ratings;
+          return (
+            <label className="rating-label" htmlFor={forAndId}>
+              <input type="radio" id={forAndId} name="rating" />
+              {rating}
+            </label>
+          );
+        })}
       </div>
 
       <div className="sidebar-category">
