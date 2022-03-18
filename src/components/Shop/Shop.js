@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Shop.css";
 export const Shop = () => {
   return (
@@ -7,9 +8,9 @@ export const Shop = () => {
         <h1 className="container-title">store for bibliophiles</h1>
 
         <button class="btn btn-link">
-          <a href="#" class="btn-text-decoration btn-shop ">
+          <Link to={"/products"} class="btn-text-decoration btn-shop ">
             shop now
-          </a>
+          </Link>
         </button>
       </main>
     </div>

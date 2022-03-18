@@ -1,0 +1,6 @@
+.product-page {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+  top: 100px;
+}

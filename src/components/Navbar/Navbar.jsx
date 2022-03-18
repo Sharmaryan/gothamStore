@@ -1,10 +1,11 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import './Navbar.css'
 export const Navbar = () => {
   return (
-    <div>
+  
     
-      <nav className="nav-menu">
+      <nav className="nav-menu navbar">
         <h1 className="nav-menu-logo">
           <Link to='/' className="text-decorations text-white">
             Gotham Store
@@ -43,6 +44,6 @@ export const Navbar = () => {
         </div>
       </nav>
       
-    </div>
+    
   );
 }
