@@ -1,5 +1,9 @@
 import "./Sidebar.css";
+import { useProduct } from "../../context/product-context";
 export const SideBar = () => {
+  const { selfhelp, business, biography, sortBy, spirtual, productsDispatch } =
+    useProduct();
+
   return (
     <aside className="sidebar">
       <p className="filter-text">filters</p>
@@ -7,11 +11,23 @@ export const SideBar = () => {
       <div className="sidebar-sortby">
         <div className="sortby-heading">sort by</div>
         <label className="sortby-label" htmlFor="high-to-low">
-          <input type="radio" id="high-to-low" name="sortBy" />
+          <input
+            type="radio"
+            id="high-to-low"
+            name="sortBy"
+            checked={sortBy === "HIGH_TO_LOW"}
+            onChange={() => productsDispatch({ type: "HIGH_TO_LOW" })}
+          />
           Price : Hight to Low
         </label>
         <label className="sortby-label" htmlFor="low-to-high">
-          <input type="radio" id="low-to-high" name="sortBy" />
+          <input
+            type="radio"
+            id="low-to-high"
+            name="sortBy"
+            checked={sortBy === "LOW_TO_HIGH"}
+            onChange={() => productsDispatch({ type: "LOW_TO_HIGH" })}
+          />
           Price : Low to High
         </label>
       </div>
@@ -34,19 +50,43 @@ export const SideBar = () => {
       <div className="sidebar-category">
         <div className="category-heading">Category</div>
         <label className="category-label" htmlFor="business">
-          <input type="checkbox" id="business" name="business" />
+          <input
+            type="checkbox"
+            id="business"
+            name="business"
+            checked={business}
+            onChange={() => productsDispatch({ type: "BUSINSESS" })}
+          />
           business
         </label>
         <label className="category-label" htmlFor="selfhelp">
-          <input type="checkbox" id="selfhelp" name="selfhelp" />
+          <input
+            type="checkbox"
+            id="selfhelp"
+            name="selfhelp"
+            checked={selfhelp}
+            onChange={() => productsDispatch({ type: "SELF_HELP" })}
+          />
           self help
         </label>
         <label className="category-label" htmlFor="biography">
-          <input type="checkbox" id="biography" name="biography" />
+          <input
+            type="checkbox"
+            id="biography"
+            name="biography"
+            checked={biography}
+            onChange={() => productsDispatch({ type: "BIOGRAPHY" })}
+          />
           biography
         </label>
         <label className="category-label" htmlFor="spirtual">
-          <input type="checkbox" id="spirtual" name="spirtual" />
+          <input
+            type="checkbox"
+            id="spirtual"
+            name="spirtual"
+            checked={spirtual}
+            onChange={() => productsDispatch({ type: "SPIRTUAL" })}
+          />
           spirtual
         </label>
       </div>

@@ -2,6 +2,7 @@ import "./App.css";
 import { Navbar } from "./components/Navbar/Navbar";
 import { Routes, Route } from "react-router-dom";
 import { LandingPage, ProductPage, CartPage, SignUp, LoginPage, WishlistPage } from './components/Routes/Routes';
+
 function App() {
   return (
     <div className="App">

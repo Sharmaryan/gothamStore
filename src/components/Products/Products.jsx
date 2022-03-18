@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Product } from "../Product/Product";
-import './Products.css'
+import { useProduct } from "../../context/product-context";
+import { filterByCategory } from "../../SortingAndFiltering/filterByCategory";
+
+import { sortByPrice } from "../../SortingAndFiltering/sortByPrice";
+
+import "./Products.css";
+
 export const Products = () => {
   useEffect(() => {
     const getProducts = async () => {
@@ -16,14 +22,23 @@ export const Products = () => {
   }, []);
 
   const [data, setData] = useState([]);
+  const { selfhelp, business, biography, spirtual, sortBy } = useProduct();
+
+  const filteredProducts = filterByCategory(
+    data,
+    selfhelp,
+    business,
+    biography,
+    spirtual
+  );
+  const sortedProducts = sortByPrice(sortBy, filteredProducts);
+
   return (
-    
-      <div className="products">
-        {data &&
-          data.map((product) => (
-            <Product product={product} key={product._id} />
-          ))}
-      </div>
-    
+    <div className="products">
+      {sortedProducts &&
+        sortedProducts.map((product) => (
+          <Product product={product} key={product._id} />
+        ))}
+    </div>
   );
 };
