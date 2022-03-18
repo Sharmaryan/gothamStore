@@ -1,0 +1,54 @@
+.sidebar {
+  margin-top: 1rem;
+  width: 20%;
+  border-right: 1px solid var(--secondary-color);
+  background-color: var(--secondary-color);
+  padding: 0.4rem 0;
+}
+.filter-btn,
+.filter-text {
+  display: inline;
+}
+
+.filter-btn {
+  background-color: var(--primary-color);
+  padding: 0 1rem;
+  font-weight: bold;
+  font-size: 1.3rem;
+  border: none;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+.sidebar-rating,
+.sidebar-category,
+.sidebar-sortby {
+  text-align: left;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.sortby-label,
+.category-label,
+.rating-label {
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  padding-left: 1.5rem;
+}
+.rating-heading,
+.category-heading,
+.sortby-heading,
+.filter-text {
+  color: var(--primary-color);
+  font-size: 1.4rem;
+  text-transform: capitalize;
+  margin: 1rem;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.sidebar-category,
+.sidebar-sortby,
+.sidebar-sortby {
+  text-transform: capitalize;
+}
