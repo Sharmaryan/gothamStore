@@ -10,9 +10,11 @@ import "./Products.css";
 
 export const Products = () => {
   useEffect(() => {
+    setLoading(true);
     const getProducts = async () => {
       try {
         const response = await axios.get("api/products");
+        setLoading(false);
         setData(response.data.products);
       } catch (error) {
         console.log(error);
@@ -22,6 +24,7 @@ export const Products = () => {
   }, []);
 
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
   const { selfhelp, business, biography, spirtual, sortBy } = useProduct();
 
   const filteredProducts = filterByCategory(
@@ -35,6 +38,7 @@ export const Products = () => {
 
   return (
     <div className="products">
+      {loading && <h1>Loading...</h1>}
       {sortedProducts &&
         sortedProducts.map((product) => (
           <Product product={product} key={product._id} />
