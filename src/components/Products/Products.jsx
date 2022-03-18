@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Product } from "../Product/Product";
+import './Products.css'
 export const Products = () => {
   useEffect(() => {
     const getProducts = async () => {
@@ -16,8 +17,13 @@ export const Products = () => {
 
   const [data, setData] = useState([]);
   return (
-    <div className="products">
-      <div>{data && data.map((product) => <Product product={product} key={product._id}/>)}</div>
-    </div>
+    
+      <div className="products">
+        {data &&
+          data.map((product) => (
+            <Product product={product} key={product._id} />
+          ))}
+      </div>
+    
   );
 };

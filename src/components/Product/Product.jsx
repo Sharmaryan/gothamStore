@@ -2,7 +2,7 @@ import React from "react";
 
 export const Product = ({ product: { image, name, price } }) => {
   return (
-    <div >
+   
       <div className="card card-vertical ">
         <img src={image} alt="" className="card-logo" />
         <p className="card-title">{name}</p>
@@ -13,6 +13,6 @@ export const Product = ({ product: { image, name, price } }) => {
           <button className="card-btn">add to wishlist</button>
         </div>
       </div>
-    </div>
+   
   );
 };

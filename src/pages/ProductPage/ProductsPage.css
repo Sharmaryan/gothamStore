@@ -1,5 +1,6 @@
-.product-page{
-    /* border: 1px solid red;
-     */
-     display: flex;
+.product-page {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+  top: 100px;
 }
