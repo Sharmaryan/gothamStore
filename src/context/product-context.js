@@ -6,8 +6,9 @@ const ProductProvider = ({ children }) => {
   const [
     {
       sortBy,
-
       category: { selfhelp, business, biography, spirtual },
+      rating,
+      range,
     },
     productsDispatch,
   ] = useReducer(ProductReducer, {
@@ -18,6 +19,8 @@ const ProductProvider = ({ children }) => {
       biography: false,
       spirtual: false,
     },
+    rating: null,
+    range: 0,
   });
 
   return (
@@ -28,6 +31,8 @@ const ProductProvider = ({ children }) => {
         business,
         biography,
         spirtual,
+        rating,
+        range,
         productsDispatch,
       }}
     >
