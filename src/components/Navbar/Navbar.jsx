@@ -23,19 +23,19 @@ export const Navbar = () => {
               </Link>
             </li>
             <li className="menu-items">
-              <Link to="login" className="text-decorations text-white">
+              <Link to="/login" className="text-decorations text-white">
                 login
               </Link>
             </li>
             <li className="menu-items fas-icons">
-              <Link to="wishlist" className="text-decorations text-white">
+              <Link to="/wishlist" className="text-decorations text-white">
                 {" "}
                 <i className="fas fa-heart"></i>{" "}
               </Link>
               <div className="count-items">0</div>
             </li>
             <li className="menu-items fas-icons">
-              <Link to="cart" className="text-decorations text-white">
+              <Link to="/cart" className="text-decorations text-white">
                 <i className="fas fa-shopping-cart"></i>
               </Link>
               <div className="count-items">0</div>
