@@ -2,6 +2,8 @@ import React from "react";
 import "./SiginUpComponent.css";
 import { useReducer } from "react";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/auth-context";
 
 export const SignUpComponent = () => {
   const signupReducer = (state, { fieldName, fieldValue, type }) => {
@@ -22,6 +24,9 @@ export const SignUpComponent = () => {
     }
   );
 
+  const { setAuth } = useAuth();
+  const navigate = useNavigate();
+
   const signupHandler = async (e) => {
     e.preventDefault();
 
@@ -32,10 +37,20 @@ export const SignUpComponent = () => {
         email,
         password,
       });
-      console.log(response);
+      const { data } = response;
 
-      localStorage.setItem("token", response.data.encodedToken);
-    
+      if (data) {
+        const { foundUser, encodedToken } = data;
+        setAuth({
+          user: { ...foundUser },
+          token: encodedToken,
+          auth: true,
+        });
+        localStorage.setItem("token", encodedToken);
+        navigate("/");
+      } else {
+        console.log("login failed");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -129,9 +144,9 @@ export const SignUpComponent = () => {
             create new account
           </button>
           <div className="have-account">
-            <a href="#" className="text-decorations account">
+            <Link to="/login" className="text-decorations account">
               already have an account
-            </a>
+            </Link>
           </div>
         </form>
       </div>
