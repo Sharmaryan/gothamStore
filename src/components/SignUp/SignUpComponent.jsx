@@ -4,16 +4,8 @@ import { useReducer } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth-context";
-
+import { signupReducer } from "../../reducer/signup-reducer";
 export const SignUpComponent = () => {
-  const signupReducer = (state, { fieldName, fieldValue, type }) => {
-    switch (type) {
-      case "INPUT":
-        return { ...state, [fieldName]: fieldValue };
-      default:
-        return { ...state };
-    }
-  };
   const [{ firstName, lastName, email, password }, dispatch] = useReducer(
     signupReducer,
     {
@@ -38,11 +30,10 @@ export const SignUpComponent = () => {
         password,
       });
       const { data } = response;
-
       if (data) {
-        const { foundUser, encodedToken } = data;
+        const { createdUser, encodedToken } = data;
         setAuth({
-          user: { ...foundUser },
+          user: { ...createdUser },
           token: encodedToken,
           auth: true,
         });
@@ -66,12 +57,10 @@ export const SignUpComponent = () => {
             <input
               onChange={(e) =>
                 dispatch({
-                  type: "INPUT",
-                  fieldName: e.target.name,
-                  fieldValue: e.target.value,
+                  type: "FNAME",
+                  payload: e.target.value,
                 })
               }
-              name="firstName"
               type="text"
               id="fname"
               placeholder="enter your first name"
@@ -84,12 +73,10 @@ export const SignUpComponent = () => {
             <input
               onChange={(e) =>
                 dispatch({
-                  type: "INPUT",
-                  fieldName: e.target.name,
-                  fieldValue: e.target.value,
+                  type: "LNAME",
+                  payload: e.target.value,
                 })
               }
-              name="lastName"
               type="text"
               id="lname"
               placeholder="enter your last name"
@@ -102,12 +89,10 @@ export const SignUpComponent = () => {
             <input
               onChange={(e) =>
                 dispatch({
-                  type: "INPUT",
-                  fieldName: e.target.name,
-                  fieldValue: e.target.value,
+                  type: "EMAIL",
+                  payload: e.target.value,
                 })
               }
-              name="email"
               type="email"
               id="email"
               placeholder="xyz@gmail.com"
@@ -120,12 +105,10 @@ export const SignUpComponent = () => {
             <input
               onChange={(e) =>
                 dispatch({
-                  type: "INPUT",
-                  fieldName: e.target.name,
-                  fieldValue: e.target.value,
+                  type: "PASSWORD",
+                  payload: e.target.value,
                 })
               }
-              name="password"
               type="password"
               id="password"
               placeholder="*********"
@@ -140,7 +123,7 @@ export const SignUpComponent = () => {
               condition
             </label>
           </div>
-          <button className="signup-btn" onClick={(e) => signupHandler(e)}>
+          <button className="signup-btn" onClick={signupHandler}>
             create new account
           </button>
           <div className="have-account">

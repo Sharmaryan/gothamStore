@@ -3,16 +3,8 @@ import axios from "axios";
 import "./Login.css";
 import { useAuth } from "../../context/auth-context";
 import { useNavigate, Link } from "react-router-dom";
+import { loginReducer } from "../../reducer/login-reducer";
 export const Login = () => {
-  const loginReducer = (state, { fieldName, fieldValue, type }) => {
-    switch (type) {
-      case "INPUT":
-        return { ...state, [fieldName]: fieldValue };
-      default:
-        return { ...state };
-    }
-  };
-
   const [{ email, password }, dispatch] = useReducer(loginReducer, {
     email: "",
     password: "",
@@ -31,12 +23,13 @@ export const Login = () => {
       });
       const { data } = response;
       if (data) {
-        const { foundUser, encodedToken } = data;
+        const { createdUser, encodedToken } = data;
         setAuth({
-          user: { ...foundUser },
+          user: { ...createdUser },
           token: encodedToken,
           auth: true,
         });
+
         localStorage.setItem("token", encodedToken);
         navigate("/");
       } else {
@@ -54,7 +47,6 @@ export const Login = () => {
         <label htmlFor="email">
           Email
           <input
-            name="email"
             type="email"
             id="email"
             placeholder="xyz@gmail.com"
@@ -62,9 +54,8 @@ export const Login = () => {
             value={email}
             onChange={(e) =>
               dispatch({
-                type: "INPUT",
-                fieldName: e.target.name,
-                fieldValue: e.target.value,
+                type: "EMAIL",
+                payload: e.target.value,
               })
             }
           />
@@ -72,7 +63,6 @@ export const Login = () => {
         <label htmlFor="password">
           Password
           <input
-            name="password"
             type="password"
             id="password"
             placeholder="*********"
@@ -80,9 +70,8 @@ export const Login = () => {
             value={password}
             onChange={(e) =>
               dispatch({
-                type: "INPUT",
-                fieldName: e.target.name,
-                fieldValue: e.target.value,
+                type: "PASSWORD",
+                payload: e.target.value,
               })
             }
           />
@@ -97,7 +86,7 @@ export const Login = () => {
             forgot your password?
           </a>
         </div>
-        <button className="login-btn" onClick={(e) => loginHandler(e)}>
+        <button className="login-btn" onClick={loginHandler}>
           login
         </button>
         <div className="new-account">
