@@ -1,7 +1,14 @@
-import React from 'react'
+import React from "react";
+import { CartSummary, CartProduct } from "../../components/Routes/Routes";
+import "./CartPage.css";
 
 export const CartPage = () => {
   return (
-    <div>CartPage</div>
-  )
-}
+    <div className="cart-page">
+      <div>
+        <CartProduct />
+      </div>
+      <CartSummary />
+    </div>
+  );
+};

@@ -5,5 +5,7 @@ import { SignUp } from "../../pages/SignUpPage/SignUp";
 import { LoginPage } from "../../pages/LoginPage/LoginPage";
 import { WishlistPage } from "../../pages/WishlistPage/WishlistPage";
 
+import { CartSummary } from "../CartSummary/CartSummary";
+import { CartProduct } from "../CartProduct/CartProduct";
 
-export { LandingPage, ProductPage, CartPage, SignUp, LoginPage, WishlistPage };
+export { LandingPage, ProductPage, CartPage, SignUp, LoginPage, WishlistPage, CartSummary, CartProduct };

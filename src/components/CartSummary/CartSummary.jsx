@@ -1,6 +1,6 @@
 import React from "react";
 import "./CartSummary.css";
-export const CartSummary = () => {
+ export const CartSummary = () => {
   return (
     <div className="price">
       <div className="price-heading">price details</div>
@@ -27,3 +27,4 @@ export const CartSummary = () => {
     </div>
   );
 };
+
