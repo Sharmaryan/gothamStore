@@ -1,0 +1,48 @@
+.price {
+  border: 1px solid var(--secondary-color);
+  text-transform: capitalize;
+  box-shadow: 5px 5px var(--gray);
+  width: 15rem;
+  padding: 1rem;
+  margin-left: 1rem;
+  height: 20rem;
+}
+.price-heading,
+.price-inner {
+  font-size: 1.1rem;
+  font-weight: light;
+}
+
+.price-heading,
+.price-total {
+  border-bottom: 1px solid var(--secondary-color);
+  color: var(--secondary-color);
+  font-weight: light;
+}
+.price-desc {
+  display: flex;
+  justify-content: space-between;
+}
+.price-desc-desc,
+.price-desc-price {
+  display: inline;
+  margin: 5px 0;
+  font-weight: lighter;
+}
+.price-total {
+  border-top: 1px solid var(--secondary-color);
+}
+.price-saving,
+.price-details-amount {
+  padding: 6px 0;
+}
+.price-btn {
+  width: 13rem;
+  background-color: var(--secondary-color);
+  padding: 3px 7px;
+  margin: 6px 0;
+  text-transform: capitalize;
+  border: none;
+  width: 9rem;
+  cursor: pointer;
+}
