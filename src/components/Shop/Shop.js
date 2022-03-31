@@ -7,8 +7,8 @@ export const Shop = () => {
       <main className="container">
         <h1 className="container-title">store for bibliophiles</h1>
 
-        <button class="btn btn-link">
-          <Link to={"/products"} class="btn-text-decoration btn-shop ">
+        <button className="btn btn-link">
+          <Link to={"/products"} className="btn-text-decoration btn-shop ">
             shop now
           </Link>
         </button>
