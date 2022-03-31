@@ -1,0 +1,9 @@
+.wishlist-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+.card-dismiss-btn{
+  cursor: pointer;
+}

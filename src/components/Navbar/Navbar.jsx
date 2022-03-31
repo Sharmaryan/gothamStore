@@ -1,11 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+
 import { useAuth } from "../../context/auth-context";
 import { useCart } from "context/cart-context";
+import { useWishlist } from "context/wishlist-context";
+
 export const Navbar = () => {
+  
   const { auth } = useAuth();
   const { cartLength } = useCart();
+  const { wishlistLength } = useWishlist();
 
   return (
     <nav className="nav-menu navbar">
@@ -42,7 +47,7 @@ export const Navbar = () => {
             <Link to="/wishlist" className="text-decorations text-white">
               <i className="fas fa-heart"></i>
             </Link>
-            <div className="count-items">0</div>
+            <div className="count-items">{wishlistLength}</div>
           </li>
           <li className="menu-items fas-icons">
             <Link to="/cart" className="text-decorations text-white">
