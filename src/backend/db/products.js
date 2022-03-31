@@ -14,6 +14,7 @@ export const products = [
     price: 450,
     star: 3.5,
     category: "biography",
+    discount : 100
   },
   {
     _id: uuid(),
@@ -23,6 +24,7 @@ export const products = [
     price: 403,
     star: 4.9,
     category: "biography",
+    discount : 99
   },
   {
     _id: uuid(),
@@ -32,6 +34,7 @@ export const products = [
     price: 469,
     star: 2.5,
     category: "business",
+    discount : 200
   },
   {
     _id: uuid(),
@@ -41,6 +44,7 @@ export const products = [
     price: 173,
     star: 1.5,
     category: "business",
+    discount : 50
   },
   {
     _id: uuid(),
@@ -50,6 +54,7 @@ export const products = [
     price: 165,
     star: 3.5,
     category: "biography",
+    discount : 80
   },
   {
     _id: uuid(),
@@ -59,6 +64,7 @@ export const products = [
     price: 243,
     star: 4.5,
     category: "self-help",
+    discount : 100
   },
   {
     _id: uuid(),
@@ -68,6 +74,7 @@ export const products = [
     price: 356,
     star: 2.5,
     category: "self-help",
+    discount : 120
   },
   {
     _id: uuid(),
@@ -77,6 +84,7 @@ export const products = [
     price: 252,
     star: 4.5,
     category: "business",
+    discount : 130
   },
   {
     _id: uuid(),
@@ -86,6 +94,7 @@ export const products = [
     price: 369,
     star: 4.5,
     category: "business",
+    discount : 200
   },
   {
     _id: uuid(),
@@ -95,6 +104,7 @@ export const products = [
     price: 252,
     star: 4.5,
     category: "business",
+    discount : 60
   },
   {
     _id: uuid(),
@@ -104,6 +114,7 @@ export const products = [
     price: 148,
     star: 4.5,
     category: "self-help",
+    discount : 90
   },
   {
     _id: uuid(),
@@ -113,6 +124,7 @@ export const products = [
     price: 243,
     star: 4.5,
     category: "self-help",
+    discount : 80
   },
   {
     _id: uuid(),
@@ -122,6 +134,7 @@ export const products = [
     price: 95,
     star: 4.5,
     category: "self-help",
+    discount : 50
   },
   {
     _id: uuid(),
@@ -131,6 +144,7 @@ export const products = [
     price: 165,
     star: 4.5,
     category: "self-help",
+    discount : 30
   },
   {
     _id: uuid(),
@@ -140,6 +154,7 @@ export const products = [
     price: 98,
     star: 4.5,
     category: "spirtual",
+    discount : 20
   },
   {
     _id: uuid(),
@@ -149,6 +164,7 @@ export const products = [
     price: 139,
     star: 4.5,
     category: "spirtual",
+    discount : 39
   },
   {
     _id: uuid(),
@@ -158,6 +174,7 @@ export const products = [
     price: 254,
     star: 4.5,
     category: "spirtual",
+    discount : 100
   },
   {
     _id: uuid(),
@@ -167,5 +184,6 @@ export const products = [
     price: 285,
     star: 4.5,
     category: "spirtual",
+    discount : 100
   },
 ];
