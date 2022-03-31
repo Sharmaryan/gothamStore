@@ -40,10 +40,7 @@ const CartProvider = ({ children }) => {
   };
 
   const totalCartItems = (itemsAdded) => {
-    return [...itemsAdded].reduce(
-      (acc, curr) => Number(acc) + curr.qty,
-      0
-    );
+    return [...itemsAdded].reduce((acc, curr) => Number(acc) + curr.qty, 0);
   };
 
   const addToCart = async (product) => {
@@ -128,59 +125,3 @@ const CartProvider = ({ children }) => {
 const useCart = () => useContext(CartContext);
 
 export { CartProvider, useCart };
-
-// const incrementQuantity = async() => {
-//   // setItemsAdded((prevState) =>
-//   //   prevState.map((item) => {
-//   //     if (item._id === product._id) {
-//   //       return { ...item, quantity: item.quantity + 1 };
-//   //     } else {
-//   //       return item;
-//   //     }
-//   //   })
-//   // );
-//   const response = await axios.post("/api/user/cart", {
-//     product: {
-
-//       name: "Steve Jobs",
-//       image:
-//         "https://images-eu.ssl-images-amazon.com/images/I/41ZlN7iry-L._SY264_BO1,204,203,200_QL40_FMwebp_.jpg",
-//       price: 403,
-//       star: 4.9,
-//       category: "biography",
-//       quantity: 0,
-//       discount: 99,
-//     },
-//   });
-// console.log(response)
-// };
-// const decrementQuantity = (product) => {
-//   setItemsAdded((prevState) =>
-//     prevState.map((item) => {
-//       if (item._id === product._id) {
-//         if (item.quantity > 1) {
-//           return { ...item, quantity: item.quantity - 1 };
-//         } else {
-//           return { ...item };
-//         }
-//       } else {
-//         return item;
-//       }
-//     })
-//   );
-// };
-
-// const isProductInCart = (product, cart) =>
-//   cart.some((item) => item._id === product._id);
-
-// const removeFromCart = (product) => {
-//   setItemsAdded((prevState) =>
-//     prevState.filter((items) => items._id !== product._id)
-//   );
-// };
-
-// if (isProductInCart(product, itemsAdded)) {
-//   incrementQuantity(product);
-// } else {
-//   setItemsAdded((prevState) => [...prevState, { ...product, quantity: 1 }]);
-// }
