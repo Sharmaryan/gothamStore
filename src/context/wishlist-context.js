@@ -9,7 +9,7 @@ const WishlistProvider = ({ children }) => {
   const [wishlistItems, setWishlistItems] = useState([]);
   const [errorMsg, setErrorMsg] = useState(false);
   const { auth } = useAuth();
-  const { addToCart, itemsAdded } = useCart();
+  const { addToCart, itemsAdded, removeFromCart } = useCart();
   const wishlistLength = wishlistItems.length;
 
   const addToWishlist = async (product) => {
@@ -67,6 +67,11 @@ const WishlistProvider = ({ children }) => {
     }
   };
 
+  const moveToWishlist = (product) => {
+    addToWishlist(product);
+    removeFromCart(product);
+  };
+
   return (
     <WishlistContext.Provider
       value={{
@@ -75,7 +80,8 @@ const WishlistProvider = ({ children }) => {
         removeFromWishlist,
         moveToCart,
         wishlistLength,
-        errorMsg
+        errorMsg,
+        moveToWishlist,
       }}
     >
       {children}
