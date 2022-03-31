@@ -2,8 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { useAuth } from "../../context/auth-context";
+import { useCart } from "context/cart-context";
 export const Navbar = () => {
   const { auth } = useAuth();
+  const { cartLength } = useCart();
 
   return (
     <nav className="nav-menu navbar">
@@ -46,7 +48,7 @@ export const Navbar = () => {
             <Link to="/cart" className="text-decorations text-white">
               <i className="fas fa-shopping-cart"></i>
             </Link>
-            <div className="count-items">0</div>
+            <div className="count-items">{cartLength}</div>
           </li>
         </ul>
       </div>

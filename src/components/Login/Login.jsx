@@ -42,6 +42,8 @@ export const Login = () => {
 
   return (
     <div className="login-form">
+      <p className="guest-credentials">email: adarshbalika@gmail.com</p>
+      <p className="guest-credentials">password: adarshbalika</p>
       <h2 className="login-title">login</h2>
       <form>
         <label htmlFor="email">
