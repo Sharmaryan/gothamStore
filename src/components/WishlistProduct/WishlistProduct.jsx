@@ -7,14 +7,14 @@ export const WishlistProduct = () => {
   return (
     <div className="wishlist-items">
       {errorMsg && <h1>item is already in the cart</h1>}
-      {wishlistItems.map((items) => {
-        const { image, name, price } = items;
+      {wishlistItems.map((item) => {
+        const { image, name, price } = item;
         return (
           <div class="card card-dismiss">
             <div class="card-dismiss-btn">
               <i
                 class="fa fa-times"
-                onClick={() => removeFromWishlist(items)}
+                onClick={() => removeFromWishlist(item)}
               ></i>
             </div>
             <img src={image} alt={name} class="card-logo" />
@@ -22,7 +22,7 @@ export const WishlistProduct = () => {
             <div class="card-price">{price}</div>
 
             <div class="card-btns">
-              <button class="card-btn" onClick={() => moveToCart(items)}>
+              <button class="card-btn" onClick={() => moveToCart(item)}>
                 move to cart
               </button>
             </div>
