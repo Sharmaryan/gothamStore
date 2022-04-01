@@ -1,4 +1,5 @@
 import { useCart } from "context/cart-context";
+import { useWishlist } from "context/wishlist-context";
 import React from "react";
 import "./CartProduct.css";
 
@@ -10,6 +11,7 @@ export const CartProduct = () => {
     decrementQuantity,
     removeFromCart,
   } = useCart();
+  const { moveToWishlist } = useWishlist();
 
   return (
     <div>
@@ -50,7 +52,12 @@ export const CartProduct = () => {
                   >
                     remove from cart
                   </button>
-                  <button className="cart-button-move">move to wishlist</button>
+                  <button
+                    className="cart-button-move"
+                    onClick={() => moveToWishlist(product)}
+                  >
+                    move to wishlist
+                  </button>
                 </div>
               </div>
             </div>
