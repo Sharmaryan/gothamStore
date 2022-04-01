@@ -39,7 +39,7 @@ export const SideBar = () => {
     range,
     productsDispatch,
   } = useProduct();
-console.log(business)
+
   return (
     <aside className="sidebar">
       <p className="filter-text">filters</p>

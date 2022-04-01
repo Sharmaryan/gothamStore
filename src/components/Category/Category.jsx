@@ -7,7 +7,7 @@ export const Category = () => {
   const { productsDispatch } = useProduct();
   return (
     <div>
-      {" "}
+      
       <div className="categories">
         <div className="category">
           <img
@@ -21,7 +21,7 @@ export const Category = () => {
               className="text-decorations text-white"
               onClick={() => productsDispatch({ type: "BUSINSESS" })}
             >
-              {" "}
+           
               Business
             </Link>
           </p>
@@ -38,7 +38,7 @@ export const Category = () => {
               className="text-decorations text-white"
               onClick={() => productsDispatch({ type: "SELF_HELP" })}
             >
-              {" "}
+            
               Self Help
             </Link>
           </p>
@@ -55,7 +55,7 @@ export const Category = () => {
               className="text-decorations text-white"
               onClick={() => productsDispatch({ type: "SPIRTUAL" })}
             >
-              {" "}
+            
               Spirtual
             </Link>
           </p>
@@ -72,7 +72,7 @@ export const Category = () => {
               className="text-decorations text-white"
               onClick={() => productsDispatch({ type: "BIOGRAPHY" })}
             >
-              {" "}
+             
               Biography
             </Link>
           </p>
