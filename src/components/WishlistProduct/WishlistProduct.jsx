@@ -17,7 +17,7 @@ export const WishlistProduct = () => {
                 onClick={() => removeFromWishlist(items)}
               ></i>
             </div>
-            <img src={image} alt="" class="card-logo" />
+            <img src={image} alt={name} class="card-logo" />
             <p class="card-title">{name}</p>
             <div class="card-price">{price}</div>
 
