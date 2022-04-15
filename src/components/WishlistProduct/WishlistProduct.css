@@ -4,6 +4,16 @@
   gap: 2rem;
   justify-content: center;
 }
-.card-dismiss-btn{
-  cursor: pointer;
+.card{
+  width: 15rem;
+ 
 }
+
+.card-dismiss-btn{
+  top: 0;
+  cursor: pointer;
+  right: 1px;
+
+  
+}
+

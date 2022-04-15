@@ -6,13 +6,19 @@ import { Link } from "react-router-dom";
 export const Product = ({ product }) => {
   const { addToCart, itemsAdded } = useCart();
   const { addToWishlist, wishlistItems } = useWishlist();
-  const { image, name, price } = product;
+  const { image, name, price, star } = product;
 
   return (
     <div className="card card-vertical ">
       <img src={image} alt="" className="card-logo" />
       <p className="card-title">{name}</p>
-      <div className="card-price">{price}</div>
+      <div className="card-price">
+        ₹ {price}
+        <span className="rating">
+          {star}
+          <i class="fa fa-star "></i>
+        </span>
+      </div>
 
       <div className="card-btns">
         {itemsAdded.some((items) => items._id === product._id) ? (

@@ -1,6 +1,5 @@
 function ProductReducer(state, action) {
   const { selfhelp, business, biography, spirtual } = state.category;
-  console.log(action.type)
   switch (action.type) {
     case "LOW_TO_HIGH":
       return { ...state, sortBy: "LOW_TO_HIGH" };

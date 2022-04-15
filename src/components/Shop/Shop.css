@@ -4,18 +4,23 @@
   align-items: center;
   flex-direction: column ;
   height: 25rem;
+  margin-top: 8rem;
+  background-color: var(--secondary-color);
 }
 .container-title{
-  color: var(--secondary-color);
+  color: var(--primary-color);
   font-size: 3rem;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .btn{ 
   margin-top: 1rem;
   cursor: pointer;
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
 }
 .btn-shop{
-  color: var(--primary-color);
-
+  color: var(--secondary-color);
+}
+.btn-shop:hover{
+  color: var(--black);
 }
