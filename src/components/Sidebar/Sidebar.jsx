@@ -51,13 +51,14 @@ export const SideBar = () => {
       </button>
 
       <div className="slider-container">
-        <p>{range}</p>
+        <p className="slider-heading">{range}</p>
         <input
           type="range"
           className="slider"
           step="100"
           min="100"
           max="1000"
+          value={range}
           onChange={(e) =>
             productsDispatch({ type: "RANGE", payload: e.target.value })
           }

@@ -6,13 +6,13 @@ import { useCart } from "./cart-context";
 const WishlistContext = createContext();
 
 const WishlistProvider = ({ children }) => {
-
   const [wishlistItems, setWishlistItems] = useState([]);
   const [errorMsg, setErrorMsg] = useState(false);
   const [wishlistError, setWishListError] = useState(false);
 
   const { auth } = useAuth();
-  const { addToCart, itemsAdded, removeFromCart } = useCart();
+  const { addToCart, itemsAdded, removeFromCart, incrementQuantity } =
+    useCart();
 
   const wishlistLength = wishlistItems.length;
 
@@ -63,11 +63,10 @@ const WishlistProvider = ({ children }) => {
     if (!itemPresent) {
       addToCart(product);
       removeFromWishlist(product);
-    } else {
-      setErrorMsg(true);
-      setTimeout(() => {
-        setErrorMsg(false);
-      }, 1000);
+    }
+    if (itemPresent) {
+      incrementQuantity(product);
+      removeFromWishlist(product);
     }
   };
 
@@ -94,7 +93,7 @@ const WishlistProvider = ({ children }) => {
         wishlistLength,
         errorMsg,
         moveToWishlist,
-        wishlistError
+        wishlistError,
       }}
     >
       {children}

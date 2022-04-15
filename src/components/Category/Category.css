@@ -13,7 +13,13 @@
     box-shadow: 5px 5px var(--gray);
     cursor: pointer;
 }
-
+.categories-title{
+    width: 9rem;
+    margin: 1.3rem auto;
+    font-size: 1.7rem;
+    color: var(--secondary-color);
+    
+}
 .category-title {
     position: absolute;
     top: 5rem;
@@ -22,8 +28,15 @@
     text-align: center;
     text-transform: uppercase;
     padding: 8px 0;
-}
 
-.category-title:hover {
-    background-color: var(--gray);
+}
+.title{
+    color: white;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+.title:hover {
+    color: var(--black);
+
 }

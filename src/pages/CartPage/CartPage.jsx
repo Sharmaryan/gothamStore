@@ -11,7 +11,11 @@ export const CartPage = () => {
   return (
     <div className="cart-page">
       <div>
-        {wishlistError && <h1>item is already in the wishlist</h1>}
+        {wishlistError && (
+          <div class="alert alert-danger">
+            <p>Item is already in the wishlist</p>
+          </div>
+        )}
         <CartProduct />
       </div>
       {itemsAdded.length === 0 ? <h1>cart is empty</h1> : <CartSummary />}

@@ -39,11 +39,36 @@ export const Login = () => {
       console.log(error);
     }
   };
+  const guestHandler = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post("/api/auth/login", {
+        email: "adarshbalika@gmail.com",
+        password: "adarshbalika",
+      });
+      const { data } = response;
+      if (data) {
+        const { createdUser, encodedToken } = data;
+        setAuth({
+          user: { ...createdUser },
+          token: encodedToken,
+          auth: true,
+        });
+
+        localStorage.setItem("token", encodedToken);
+        navigate("/");
+      } else {
+        console.log("login failed");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="login-form">
-      <p className="guest-credentials">email: adarshbalika@gmail.com</p>
-      <p className="guest-credentials">password: adarshbalika</p>
+     
       <h2 className="login-title">login</h2>
       <form>
         <label htmlFor="email">
@@ -60,6 +85,7 @@ export const Login = () => {
                 payload: e.target.value,
               })
             }
+            required
           />
         </label>
         <label htmlFor="password">
@@ -76,6 +102,7 @@ export const Login = () => {
                 payload: e.target.value,
               })
             }
+            required
           />
         </label>
 
@@ -90,6 +117,9 @@ export const Login = () => {
         </div>
         <button className="login-btn" onClick={loginHandler}>
           login
+        </button>
+        <button className="login-btn" onClick={guestHandler}>
+          login with guest credentials
         </button>
         <div className="new-account">
           <Link to="/signup" className="text-decorations account-title">

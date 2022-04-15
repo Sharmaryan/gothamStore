@@ -15,7 +15,7 @@ export const Navbar = () => {
   return (
     <nav className="nav-menu navbar">
       <h1 className="nav-menu-logo">
-        <Link to="/" className="text-decorations text-white">
+        <Link to="/" className="text-decorations text-white nav-logo">
           Gotham Store
         </Link>
       </h1>
