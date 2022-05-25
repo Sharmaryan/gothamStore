@@ -10,7 +10,7 @@ export const Product = ({ product }) => {
 
   return (
     <div className="card card-vertical ">
-      <img src={image} alt="" className="card-logo" />
+      <img src={image} alt="products" className="card-logo" />
       <p className="card-title">{name}</p>
       <div className="card-price">
         ₹ {price}
