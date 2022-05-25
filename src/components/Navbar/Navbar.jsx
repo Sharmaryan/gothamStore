@@ -7,7 +7,6 @@ import { useCart } from "context/cart-context";
 import { useWishlist } from "context/wishlist-context";
 
 export const Navbar = () => {
-  
   const { auth } = useAuth();
   const { cartLength } = useCart();
   const { wishlistLength } = useWishlist();
@@ -29,13 +28,15 @@ export const Navbar = () => {
       </div>
       <div className="menu">
         <ul>
+          <li className="menu-items fas-icons">
+            <button className="btn btn-link">
+              <Link to={"/products"} className="btn-text-decoration btn-shop ">
+                shop now
+              </Link>
+            </button>
+          </li>
           {!auth.auth && (
             <>
-              <li className="menu-items">
-                <Link to="/signup" className="text-decorations text-white">
-                  sign up
-                </Link>
-              </li>
               <li className="menu-items">
                 <Link to="/login" className="text-decorations text-white">
                   login
@@ -43,6 +44,7 @@ export const Navbar = () => {
               </li>
             </>
           )}
+
           <li className="menu-items fas-icons">
             <Link to="/wishlist" className="text-decorations text-white">
               <i className="fas fa-heart"></i>

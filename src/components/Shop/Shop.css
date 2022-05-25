@@ -3,9 +3,11 @@
   justify-content: center;
   align-items: center;
   flex-direction: column ;
-  height: 25rem;
-  margin-top: 8rem;
-  background-color: var(--secondary-color);
+  height: 90vh;
+  background: url('https://img.freepik.com/free-vector/book-white-shelf-table-illustration_185757-327.jpg?size=626&ext=jpg&ga=GA1.2.2113324065.1653466222') no-repeat;
+  background-size: cover;
+  opacity: 0.8;
+
 }
 .container-title{
   color: var(--primary-color);
@@ -13,14 +15,3 @@
   font-family: 'Courier New', Courier, monospace;
 }
 
-.btn{ 
-  margin-top: 1rem;
-  cursor: pointer;
-  background-color: var(--primary-color);
-}
-.btn-shop{
-  color: var(--secondary-color);
-}
-.btn-shop:hover{
-  color: var(--black);
-}

@@ -34,3 +34,12 @@ background-color: var(--secondary-color);
     width: 1.2rem;
     height: 1.2rem;
 }
+.btn{ 
+  margin-top: 1rem;
+  cursor: pointer;
+  background-color: var(--secondary-color);
+  border-radius: 1rem;
+}
+.btn-shop{
+  color: var(--primary-color);
+}
