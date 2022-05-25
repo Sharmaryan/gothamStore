@@ -1,36 +1,34 @@
 
 .login-form {
   width: 22rem;
-  border: 3px solid var(--secondary-color);
+  border: 3px solid var(--primary-color);
   padding: 1rem;
-  box-shadow: 5px 5px var(--gray);
   text-transform: capitalize;
   margin-top: 5rem;
 }
 .login-title {
   text-align: center;
-  color: var(--secondary-color);
+  color: var(--primary-color);
 }
 .input {
   padding: 8px 0;
-
   display: block;
   margin: 1rem 0;
   width: 100%;
-  border: 2px solid var(--gray);
+  border: 2px solid var(--primary-color);
 }
 .password-forgot {
   padding-left: 1rem;
-  color: var(--gray);
+  color: var(--primary-color);
 }
 .login-btn {
   display: block;
   margin: 1rem 0;
   width: 100%;
   padding: 6px 0;
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
   border: none;
-  color: var(--primary-color);
+  color: var(--secondary-color);
   text-transform: uppercase;
   cursor: pointer;
 }
@@ -38,5 +36,5 @@
   text-align: center;
 }
 .account-title {
-  color: var(--gray);
+  color: var(--primary-color);
 }

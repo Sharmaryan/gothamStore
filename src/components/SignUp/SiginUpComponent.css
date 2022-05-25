@@ -6,7 +6,7 @@
 }
 .signup-form{
     width: 22rem;
-    border: 3px solid var(--secondary-color);
+    border: 3px solid var(--primary-color);
     margin-top: 1rem;
     padding: 1rem;
     box-shadow: 5px 5px var(--gray);
@@ -14,7 +14,7 @@
 }
 .signup-form-title{
     text-align: center;
-    color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 .input{
@@ -32,9 +32,9 @@ margin: 5px 0;
     margin: 1rem 0;
     width: 100%;
     padding: 6px 0;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     border: none;
-    color: var(--primary-color);
+    color: var(--secondary-color);
     text-transform: uppercase;
     cursor: pointer;
 }

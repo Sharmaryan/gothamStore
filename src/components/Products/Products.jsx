@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Product } from "../Product/Product";
 import { useProduct } from "../../context/product-context";
-import  {filterByCategory, sortByPrice, sortByRating, filterByPriceRange} from '../../SortingAndFiltering/index'
+import {
+  filterByCategory,
+  sortByPrice,
+  sortByRating,
+  filterByPriceRange,
+} from "../../SortingAndFiltering/index";
 
 import "./Products.css";
 
@@ -23,8 +28,16 @@ export const Products = () => {
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const { selfhelp, business, biography, spirtual, sortBy, rating, range } =
-    useProduct();
+  const {
+    selfhelp,
+    business,
+    biography,
+    spirtual,
+    sortBy,
+    rating,
+    range,
+    searchProduct,
+  } = useProduct();
 
   const filteredProducts = filterByCategory(
     data,
@@ -33,18 +46,23 @@ export const Products = () => {
     biography,
     spirtual
   );
-  const sortedProducts = sortByPrice(sortBy, filteredProducts);
 
+  const searchForProduct = (products, search) =>
+    products.filter((item) =>
+      item.name.toLowerCase().includes(search.toLowerCase())
+    );
+
+  const sortedProducts = sortByPrice(sortBy, filteredProducts);
   const ratedProducts = sortByRating(sortedProducts, rating);
   const products = filterByPriceRange(ratedProducts, range);
+  const searchedProduct = searchForProduct(products, searchProduct);
 
   return (
     <div className="products">
       {loading && <h1>Loading...</h1>}
-      {products &&
-        products.map((product) => (
-          <Product product={product} key={product._id} />
-        ))}
+      {searchedProduct?.map((product) => (
+        <Product product={product} key={product._id} />
+      ))}
     </div>
   );
 };

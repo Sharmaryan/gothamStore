@@ -25,6 +25,8 @@ function ProductReducer(state, action) {
         ...state,
         category: { ...state.category, spirtual: !spirtual },
       };
+      case 'SEARCH_PRODUCT':
+        return { ...state, searchProduct : action.payload};
     case "ABOVE_FOUR":
       return { ...state, rating: "ABOVE_FOUR" };
     case "ABOVE_THREE":

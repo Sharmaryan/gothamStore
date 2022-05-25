@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 import axios from "axios";
 import "./Login.css";
 import { useAuth } from "../../context/auth-context";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { loginReducer } from "../../reducer/login-reducer";
 export const Login = () => {
   const [{ email, password }, dispatch] = useReducer(loginReducer, {
@@ -10,9 +10,10 @@ export const Login = () => {
     password: "",
   });
 
-  const { setAuth } = useAuth();
+  const { setAuth, auth } = useAuth();
   const navigate = useNavigate();
-
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const loginHandler = async (e) => {
     e.preventDefault();
 
@@ -21,19 +22,14 @@ export const Login = () => {
         email,
         password,
       });
-      const { data } = response;
-      if (data) {
-        const { createdUser, encodedToken } = data;
-        setAuth({
-          user: { ...createdUser },
-          token: encodedToken,
-          auth: true,
-        });
-
+      const {
+        status,
+        data: { encodedToken, foundUser },
+      } = response;
+      if (status >= 200 && status <= 299) {
+        setAuth({ ...auth, auth: true, user: foundUser, token: encodedToken });
         localStorage.setItem("token", encodedToken);
-        navigate("/");
-      } else {
-        console.log("login failed");
+        navigate(from, { replace: true });
       }
     } catch (error) {
       console.log(error);
@@ -47,28 +43,22 @@ export const Login = () => {
         email: "adarshbalika@gmail.com",
         password: "adarshbalika",
       });
-      const { data } = response;
-      if (data) {
-        const { createdUser, encodedToken } = data;
-        setAuth({
-          user: { ...createdUser },
-          token: encodedToken,
-          auth: true,
-        });
-
+      const {
+        status,
+        data: { encodedToken, foundUser },
+      } = response;
+      if (status >= 200 && status <= 299) {
+        setAuth({ ...auth, auth: true, user: foundUser, token: encodedToken });
         localStorage.setItem("token", encodedToken);
-        navigate("/");
-      } else {
-        console.log("login failed");
+        navigate(from, { replace: true });
       }
     } catch (error) {
-      console.log(error);
+      console.log("something went wrong");
     }
   };
 
   return (
     <div className="login-form">
-     
       <h2 className="login-title">login</h2>
       <form>
         <label htmlFor="email">
