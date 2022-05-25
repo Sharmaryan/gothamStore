@@ -1,16 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
-
-import { useAuth } from "../../context/auth-context";
-import { useCart } from "context/cart-context";
-import { useWishlist } from "context/wishlist-context";
+import { useAuth, useCart, useWishlist, useProduct  } from "../../context";
 
 export const Navbar = () => {
   const { auth } = useAuth();
   const { cartLength } = useCart();
   const { wishlistLength } = useWishlist();
-
+  const { pathname } = useLocation();
+  const { searchProduct, productsDispatch } = useProduct();
   return (
     <nav className="nav-menu navbar">
       <h1 className="nav-menu-logo">
@@ -18,14 +16,19 @@ export const Navbar = () => {
           Gotham Store
         </Link>
       </h1>
-      <div className="search">
-        <i className="fas fa-search search-background"></i>
-        <input
-          type="text"
-          placeholder="search products"
-          className="search-bar"
-        />
-      </div>
+
+      {pathname === "/products" && (
+        <div className="search">
+          <i className="fas fa-search search-background"></i>
+          <input
+            type="text"
+            placeholder="search products"
+            className="search-bar"
+            value={searchProduct}
+            onChange={(e) => productsDispatch({type:'SEARCH_PRODUCT', payload: e.target.value})}
+          />
+        </div>
+      )}
       <div className="menu">
         <ul>
           <li className="menu-items fas-icons">
