@@ -10,8 +10,8 @@
     border-radius: 0;
 }
 .nav-logo{
-    font-weight: 500;
-
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
 }
 .text-decorations{
     color: var(--secondary-color);  
@@ -19,7 +19,18 @@
 .search{
 border: 2px solid var(--secondary-color);
 padding: 5px;
+background-color: var(--secondary-color);
+}
+.fa-search{
+    color: var(--primary-color);
 }
 .menu-items{
     font-size: 1.1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+.count-items{
+    background-color: #686829;
+    width: 1.2rem;
+    height: 1.2rem;
 }
