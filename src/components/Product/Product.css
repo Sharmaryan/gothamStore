@@ -1,31 +1,35 @@
 .rating {
   margin-left: 5rem;
-   color: var(--primary-color);
+   color: var(--secondary-color);
 }
-.cart-secondary {
+.cart- {
   text-decoration: none;
-  color: var(--primary-color);
+  color: var(--secondary-color);
 }
 .card-title {
-  color: var(--primary-color);
+  color: var(--secondary-color);
   font-weight: 500;
 }
 .card-price{
-    color: var(--primary-color);
+    color: var(--secondary-color);
 }
 .card-btns {
   margin-top: 1.2rem;
 }
 .card-btn {
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
 }
 .card{
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
 }
 .fa-star{
   margin-left: 5px;
 }
 .card-logo{
   height: 14rem;
+}
+.cart-move, .cart-wishlist{
+  text-decoration: none;
+  color: var(--primary-color);
 }

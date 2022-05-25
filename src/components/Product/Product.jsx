@@ -23,7 +23,7 @@ export const Product = ({ product }) => {
       <div className="card-btns">
         {itemsAdded.some((items) => items._id === product._id) ? (
           <button className="card-btn card-vertical-btn ">
-            <Link className="cart-secondary" to="/cart">
+            <Link className="cart-secondary cart-move" to="/cart">
               Move to Cart
             </Link>
           </button>
@@ -37,7 +37,7 @@ export const Product = ({ product }) => {
         )}
         {wishlistItems.some((items) => items._id === product._id) ? (
           <button className="card-btn card-vertical-btn ">
-            <Link className="cart-secondary" to="/wishlist">
+            <Link className="cart-secondary cart-wishlist" to="/wishlist">
               Move to Wishlist
             </Link>
           </button>

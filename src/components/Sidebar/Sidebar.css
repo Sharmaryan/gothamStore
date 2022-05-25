@@ -14,12 +14,12 @@
 }
 
 .filter-btn {
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
   padding: 0 1.4rem;
+  border: none;
   font-weight: 500;
   font-size: 1.3rem;
-  border: none;
   text-transform: capitalize;
   cursor: pointer;
 }
@@ -45,16 +45,16 @@
   display: block;
   margin-bottom: 1rem;
   padding-left: 1.5rem;
-  color: var(--black);
-  font-weight: 500;
+  color: var(--primary-color);
+  font-weight: bolder;
 }
 .rating-heading,
 .category-heading,
 .sortby-heading,
 .filter-text,
 .slider-heading {
-  color: var(--black);
-  font-size: 1.4rem;
+  color: var(--primary-color);
+  font-size: 1.7rem;
   text-transform: capitalize;
   margin: 1rem;
   font-style: italic;
