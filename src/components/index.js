@@ -1,7 +1,6 @@
 export {CartProduct} from '../components/CartProduct/CartProduct';
 export {CartSummary} from '../components/CartSummary/CartSummary';
 export {Category} from '../components/Category/Category';
-export {Category} from '../components/Category/Category';
 export {Login} from '../components/Login/Login';
 export {Navbar} from '../components/Navbar/Navbar';
 export {Product} from '../components/Product/Product';
