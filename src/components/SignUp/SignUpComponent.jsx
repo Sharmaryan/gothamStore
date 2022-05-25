@@ -16,12 +16,11 @@ export const SignUpComponent = () => {
     }
   );
 
-  const { setAuth } = useAuth();
+  const { setAuth, auth } = useAuth();
   const navigate = useNavigate();
 
   const signupHandler = async (e) => {
     e.preventDefault();
-
     try {
       const response = await axios.post(`/api/auth/signup`, {
         firstName,
@@ -29,18 +28,20 @@ export const SignUpComponent = () => {
         email,
         password,
       });
-      const { data } = response;
-      if (data) {
-        const { createdUser, encodedToken } = data;
+      const {
+        status,
+        data: { encodedToken, createdUser },
+      } = response;
+
+      if (status >= 200 && status <= 299) {
         setAuth({
-          user: { ...createdUser },
-          token: encodedToken,
+          ...auth,
           auth: true,
+          user: createdUser,
+          token: encodedToken,
         });
         localStorage.setItem("token", encodedToken);
         navigate("/");
-      } else {
-        console.log("login failed");
       }
     } catch (error) {
       console.log(error);

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
-import { useAuth, useCart, useWishlist, useProduct  } from "../../context";
+import { useAuth, useCart, useWishlist, useProduct } from "../../context";
 
 export const Navbar = () => {
   const { auth } = useAuth();
@@ -25,7 +25,12 @@ export const Navbar = () => {
             placeholder="search products"
             className="search-bar"
             value={searchProduct}
-            onChange={(e) => productsDispatch({type:'SEARCH_PRODUCT', payload: e.target.value})}
+            onChange={(e) =>
+              productsDispatch({
+                type: "SEARCH_PRODUCT",
+                payload: e.target.value,
+              })
+            }
           />
         </div>
       )}
@@ -38,14 +43,18 @@ export const Navbar = () => {
               </Link>
             </button>
           </li>
-          {!auth.auth && (
-            <>
-              <li className="menu-items">
-                <Link to="/login" className="text-decorations text-white">
-                  login
-                </Link>
-              </li>
-            </>
+          {auth.user ? (
+            <li className="menu-items">
+              <Link to="/profile" className="text-decorations text-white">
+                <i className="fas fa-user-alt"></i>
+              </Link>
+            </li>
+          ) : (
+            <li className="menu-items">
+              <Link to="/login" className="text-decorations text-white">
+                login
+              </Link>
+            </li>
           )}
 
           <li className="menu-items fas-icons">

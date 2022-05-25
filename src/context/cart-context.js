@@ -1,12 +1,13 @@
 import { useContext, createContext, useState, useEffect } from "react";
 import axios from "axios";
 import { useAuth } from "./auth-context";
+import { useNavigate } from "react-router-dom";
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const [itemsAdded, setItemsAdded] = useState([]);
   const [isDisable, setIsDisable] = useState(false);
-
+  const navigate = useNavigate();
   const cartLength = itemsAdded.length;
   const { auth } = useAuth();
   useEffect(() => {
@@ -44,19 +45,22 @@ const CartProvider = ({ children }) => {
   };
 
   const addToCart = async (product) => {
-    try {
-      const response = await axios({
-        method: "post",
-        url: "/api/user/cart",
-        headers: { authorization: auth.token },
-        data: { product: product },
-      });
-      setItemsAdded(response.data.cart);
-    } catch (err) {
-      console.log(err.response);
+    if (!auth.user) {
+      navigate("/login");
+    } else {
+      try {
+        const response = await axios({
+          method: "post",
+          url: "/api/user/cart",
+          headers: { authorization: auth.token },
+          data: { product: product },
+        });
+        setItemsAdded(response.data.cart);
+      } catch (err) {
+        console.log(err.response);
+      }
     }
   };
-
   const incrementQuantity = async (product) => {
     const productId = product._id;
     try {

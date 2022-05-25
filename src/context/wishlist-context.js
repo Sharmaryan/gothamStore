@@ -2,14 +2,15 @@ import { useEffect, useContext, createContext, useState } from "react";
 import { useAuth } from "./auth-context";
 import axios from "axios";
 import { useCart } from "./cart-context";
-
+import { useNavigate } from "react-router-dom";
 const WishlistContext = createContext();
 
 const WishlistProvider = ({ children }) => {
   const [wishlistItems, setWishlistItems] = useState([]);
   const [errorMsg, setErrorMsg] = useState(false);
   const [wishlistError, setWishListError] = useState(false);
-
+  
+  const navigate = useNavigate();
   const { auth } = useAuth();
   const { addToCart, itemsAdded, removeFromCart, incrementQuantity } =
     useCart();
@@ -17,16 +18,20 @@ const WishlistProvider = ({ children }) => {
   const wishlistLength = wishlistItems.length;
 
   const addToWishlist = async (product) => {
-    try {
-      const response = await axios({
-        method: "post",
-        url: "/api/user/wishlist",
-        headers: { authorization: auth.token },
-        data: { product: product },
-      });
-      setWishlistItems(response.data.wishlist);
-    } catch (err) {
-      console.log(err.response);
+    if (!auth.user) {
+      navigate("/login");
+    } else {
+      try {
+        const response = await axios({
+          method: "post",
+          url: "/api/user/wishlist",
+          headers: { authorization: auth.token },
+          data: { product: product },
+        });
+        setWishlistItems(response.data.wishlist);
+      } catch (err) {
+        console.log(err.response);
+      }
     }
   };
 
