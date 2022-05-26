@@ -3,6 +3,7 @@ import { useAuth } from "./auth-context";
 import axios from "axios";
 import { useCart } from "./cart-context";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "hooks/useToast";
 const WishlistContext = createContext();
 
 const WishlistProvider = ({ children }) => {
@@ -14,7 +15,7 @@ const WishlistProvider = ({ children }) => {
   const { auth } = useAuth();
   const { addToCart, itemsAdded, removeFromCart, incrementQuantity } =
     useCart();
-
+const {showToast} = useToast();
   const wishlistLength = wishlistItems.length;
 
   const addToWishlist = async (product) => {
@@ -29,8 +30,9 @@ const WishlistProvider = ({ children }) => {
           data: { product: product },
         });
         setWishlistItems(response.data.wishlist);
+        showToast("success", "Added to Wishlist!");
       } catch (err) {
-        console.log(err.response);
+        showToast("error", "Something went wrong with server!");
       }
     }
   };
@@ -58,8 +60,9 @@ const WishlistProvider = ({ children }) => {
         headers: { authorization: auth.token },
       });
       setWishlistItems(response.data.wishlist);
+      showToast("warning", "Removed from Wishlist!");
     } catch (err) {
-      console.log(err.response);
+      showToast("error", "Something went wrong with server!");
     }
   };
 

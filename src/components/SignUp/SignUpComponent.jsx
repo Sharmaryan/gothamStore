@@ -5,6 +5,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth-context";
 import { signupReducer } from "../../reducer/signup-reducer";
+import { useToast } from "hooks/useToast";
 export const SignUpComponent = () => {
   const [{ firstName, lastName, email, password }, dispatch] = useReducer(
     signupReducer,
@@ -18,7 +19,7 @@ export const SignUpComponent = () => {
 
   const { setAuth, auth } = useAuth();
   const navigate = useNavigate();
-
+const {showToast} = useToast();
   const signupHandler = async (e) => {
     e.preventDefault();
     try {
@@ -42,9 +43,10 @@ export const SignUpComponent = () => {
         });
         localStorage.setItem("token", encodedToken);
         navigate("/");
+        showToast("success", "Account Created Successfully!");
       }
     } catch (error) {
-      console.log(error);
+      showToast("error", "Something went wrong with server!");
     }
   };
 

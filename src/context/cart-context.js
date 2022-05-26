@@ -2,12 +2,14 @@ import { useContext, createContext, useState, useEffect } from "react";
 import axios from "axios";
 import { useAuth } from "./auth-context";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "hooks/useToast";
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const [itemsAdded, setItemsAdded] = useState([]);
   const [isDisable, setIsDisable] = useState(false);
   const navigate = useNavigate();
+  const {showToast} = useToast();
   const cartLength = itemsAdded.length;
   const { auth } = useAuth();
   useEffect(() => {
@@ -55,9 +57,10 @@ const CartProvider = ({ children }) => {
           headers: { authorization: auth.token },
           data: { product: product },
         });
+        showToast('success','Added to Cart!');
         setItemsAdded(response.data.cart);
       } catch (err) {
-        console.log(err.response);
+        showToast("error", "Something went wrong with server!");
       }
     }
   };
@@ -101,8 +104,9 @@ const CartProvider = ({ children }) => {
         headers: { authorization: auth.token },
       });
       setItemsAdded(response.data.cart);
+      showToast("warning", "Removed from Cart!");
     } catch (err) {
-      console.log(err.response);
+      showToast("error", "Something went wrong with server!");
     }
   };
   return (

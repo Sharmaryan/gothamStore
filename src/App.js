@@ -12,6 +12,8 @@ import {
   UserProfile,
 } from "./components/Routes/Routes";
 import { SingleProductPage } from "pages/SingleProductPage/SingleProductPage";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -48,6 +50,19 @@ function App() {
           }
         />
       </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      {/* Same as */}
+      <ToastContainer />
     </div>
   );
 }
