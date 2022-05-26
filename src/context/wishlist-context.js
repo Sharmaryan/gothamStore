@@ -9,8 +9,6 @@ const WishlistContext = createContext();
 const WishlistProvider = ({ children }) => {
   const [wishlistItems, setWishlistItems] = useState([]);
   const [errorMsg, setErrorMsg] = useState(false);
-  const [wishlistError, setWishListError] = useState(false);
-  
   const navigate = useNavigate();
   const { auth } = useAuth();
   const { addToCart, itemsAdded, removeFromCart, incrementQuantity } =
@@ -84,10 +82,7 @@ const {showToast} = useToast();
       addToWishlist(product);
       removeFromCart(product);
     } else {
-      setWishListError(true);
-      setTimeout(() => {
-        setWishListError(false);
-      }, 1000);
+      showToast("warning", "Item is already in the wishlist");
     }
   };
 
@@ -101,7 +96,7 @@ const {showToast} = useToast();
         wishlistLength,
         errorMsg,
         moveToWishlist,
-        wishlistError,
+        
       }}
     >
       {children}
