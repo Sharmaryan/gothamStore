@@ -40,8 +40,8 @@ export const Login = () => {
 
     try {
       const response = await axios.post("/api/auth/login", {
-        email: "adarshbalika@gmail.com",
-        password: "adarshbalika",
+        email: "Testuser@gmail.com",
+        password: "Testuser",
       });
       const {
         status,
