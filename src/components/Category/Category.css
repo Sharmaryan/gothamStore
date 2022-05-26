@@ -5,6 +5,7 @@
     align-items: center;
     flex-wrap: wrap;
     padding: 1rem 0;
+    gap: 1rem;
 }
 
 .category {
@@ -28,6 +29,7 @@
     text-align: center;
     text-transform: uppercase;
     padding: 8px 0;
+    color: var(--secondary-color);
 
 }
 .title{
