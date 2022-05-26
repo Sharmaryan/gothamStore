@@ -43,7 +43,7 @@ export const Category = () => {
 
   return (
     <div>
-      <h2 className="categories-title">Categories</h2>
+      <h2 className="categories-title text-l text-center">Categories</h2>
       <div className="categories">
         {categories.map(({ image, altText, dispatchType, title, id }) => {
           return (

@@ -2,7 +2,6 @@
 .most-wishlisted {
     display: flex;
     justify-content: space-around;
-    align-items: center;
     flex-wrap: wrap;
     padding: 1rem 0;
     gap: 1rem;
@@ -15,11 +14,7 @@
     cursor: pointer;
 }
 .categories-title{
-    width: 9rem;
-    margin: 1.3rem auto;
-    font-size: 1.7rem;
-    color: var(--primary-color);
-    
+    color: var(--primary-color);  
 }
 .category-title {
     position: absolute;
