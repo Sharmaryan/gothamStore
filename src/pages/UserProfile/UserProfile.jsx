@@ -18,10 +18,10 @@ export const UserProfile = () => {
     <div className="profile">
       <div className="card card-simple">
         <p className="card-title">Your Profile</p>
-        <p className="card-desc">
+        <p className="card-desc profile-username">
           Name :{firstName} {lastName}
         </p>
-        <p className="card-desc">Email :{email}</p>
+        <p className="card-desc profile-email" >Email :{email}</p>
         <button className="card-btn" onClick={logout}>
           Logout
         </button>
