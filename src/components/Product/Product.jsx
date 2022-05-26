@@ -6,11 +6,13 @@ import { Link } from "react-router-dom";
 export const Product = ({ product }) => {
   const { addToCart, itemsAdded } = useCart();
   const { addToWishlist, wishlistItems } = useWishlist();
-  const { image, name, price, star } = product;
+  const { image, name, price, star, _id } = product;
 
   return (
     <div className="card card-vertical ">
-      <img src={image} alt="products" className="card-logo" />
+      <Link to={`/products/${_id}`}>
+        <img src={image} alt="products" className="card-logo" />
+      </Link>
       <p className="card-title">{name}</p>
       <div className="card-price">
         ₹ {price}

@@ -11,6 +11,7 @@ import {
   WishlistPage,
   UserProfile,
 } from "./components/Routes/Routes";
+import { SingleProductPage } from "pages/SingleProductPage/SingleProductPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/products" element={<ProductPage />} />
+        <Route path="/products/:productId" element={<SingleProductPage />} />
         <Route
           path="/cart"
           element={
