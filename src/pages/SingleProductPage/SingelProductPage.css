@@ -1,24 +1,27 @@
 .single-product {
-  border:3px solid var(--primary-color);
   display: flex;
-  height: 100vh;
   align-items: center;
   width: 80%;
-  margin: 5rem auto;
+  margin: 7rem auto;
   justify-content: space-around;
+  box-shadow: 5px 5px 8px 5px var(--primary-color);
 }
 
 .single-product-card {
   width: 30rem;
   background-color: var(--secondary-color);
+  box-shadow: none;
 }
 .single-product-image {
   height: 20rem;
   width: 14rem;
 }
-.single-product-title{
-    color: var(--primary-color);
-    
+.single-product-title,.single-category-price{
+    color: var(--primary-color);  
+}
+.single-category-price{
+  font-size: 1.3rem;
+  margin-top: 9px;
 }
 .single-product-category{
     background-color: var(--primary-color);

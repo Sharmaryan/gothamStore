@@ -22,49 +22,48 @@ export const SingleProductPage = () => {
   return (
     <div className="single-product">
       <img src={image} alt="" className="single-product-image " />
-      <div className="single-product-details">
-        <div class="card card-vertical single-product-card">
-          <p class="card-title single-product-title text-xl">{name}</p>
-          <p class="single-product-category text-m">
-            <span className="single-category">Category:</span>
-            <span className="single-category-name">{category}</span>
-          </p>
-          <div class="card-price">${price}</div>
-          <p class="card-desc single-product-desc text-sm">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea impedit
-            quod adipisci facilis? Obcaecati autem odit debitis tempora fugiat
-            tenetur? Dolorum numquam voluptate sunt incidunt et odit nulla
-            consequatur laboriosam.
-          </p>
-          <div class="card-btns">
-            {itemsAdded.some((items) => items._id === singleProduct._id) ? (
-              <Link to="/cart">
-                <button class="card-btn card-vertical-btn category-btns">
-                  move to cart
-                </button>
-              </Link>
-            ) : (
-              <button
-                class="card-btn card-vertical-btn category-btns"
-                onClick={() => addToCart(singleProduct)}
-              >
-                add to cart
-              </button>
-            )}
 
-            {wishlistItems.some((items) => items._id === singleProduct._id) ? (
-              <Link to="/wishlist">
-                <button class="card-btn category-btns">move to wishlist</button>
-              </Link>
-            ) : (
-              <button
-                class="card-btn category-btns"
-                onClick={() => addToWishlist(singleProduct)}
-              >
-                add to wishlist
+      <div class="card card-vertical single-product-card">
+        <p class="card-title single-product-title text-xl">{name}</p>
+        <p class="single-product-category text-m">
+          <span className="single-category">Category:</span>
+          <span className="single-category-name">{category}</span>
+        </p>
+        <div class="card-price single-category-price">₹{price}</div>
+        <p class="card-desc single-product-desc text-sm">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea impedit
+          quod adipisci facilis? Obcaecati autem odit debitis tempora fugiat
+          tenetur? Dolorum numquam voluptate sunt incidunt et odit nulla
+          consequatur laboriosam.
+        </p>
+        <div class="card-btns">
+          {itemsAdded.some((items) => items._id === singleProduct._id) ? (
+            <Link to="/cart">
+              <button class="card-btn card-vertical-btn category-btns">
+                move to cart
               </button>
-            )}
-          </div>
+            </Link>
+          ) : (
+            <button
+              class="card-btn card-vertical-btn category-btns"
+              onClick={() => addToCart(singleProduct)}
+            >
+              add to cart
+            </button>
+          )}
+
+          {wishlistItems.some((items) => items._id === singleProduct._id) ? (
+            <Link to="/wishlist">
+              <button class="card-btn category-btns">move to wishlist</button>
+            </Link>
+          ) : (
+            <button
+              class="card-btn category-btns"
+              onClick={() => addToWishlist(singleProduct)}
+            >
+              add to wishlist
+            </button>
+          )}
         </div>
       </div>
     </div>
