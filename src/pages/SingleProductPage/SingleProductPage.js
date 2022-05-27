@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import "./SingelProductPage.css";
 import { useCart, useWishlist } from "context";
+import { productExists } from "utility/productExists";
 export const SingleProductPage = () => {
   const [singleProduct, setSingleProduct] = useState([]);
 
@@ -37,7 +38,7 @@ export const SingleProductPage = () => {
           consequatur laboriosam.
         </p>
         <div class="card-btns">
-          {itemsAdded.some((items) => items._id === singleProduct._id) ? (
+          {productExists(itemsAdded, singleProduct) ? (
             <Link to="/cart">
               <button class="card-btn card-vertical-btn category-btns">
                 move to cart
@@ -52,7 +53,7 @@ export const SingleProductPage = () => {
             </button>
           )}
 
-          {wishlistItems.some((items) => items._id === singleProduct._id) ? (
+          {productExists(wishlistItems, singleProduct) ? (
             <Link to="/wishlist">
               <button class="card-btn category-btns">move to wishlist</button>
             </Link>

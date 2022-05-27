@@ -3,6 +3,7 @@ import { useWishlist } from "context/wishlist-context";
 import React from "react";
 import "./Product.css";
 import { Link } from "react-router-dom";
+import { productExists } from "utility/productExists";
 export const Product = ({ product }) => {
   const { addToCart, itemsAdded } = useCart();
   const { addToWishlist, wishlistItems } = useWishlist();
@@ -23,7 +24,7 @@ export const Product = ({ product }) => {
       </div>
 
       <div className="card-btns">
-        {itemsAdded.some((items) => items._id === product._id) ? (
+        {productExists(itemsAdded, product) ? (
           <button className="card-btn card-vertical-btn ">
             <Link className="cart-secondary cart-move" to="/cart">
               Move to Cart
@@ -37,7 +38,7 @@ export const Product = ({ product }) => {
             add to cart
           </button>
         )}
-        {wishlistItems.some((items) => items._id === product._id) ? (
+        {productExists(wishlistItems, product) ? (
           <button className="card-btn card-vertical-btn ">
             <Link className="cart-secondary cart-wishlist" to="/wishlist">
               Move to Wishlist
