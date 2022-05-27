@@ -43,22 +43,19 @@ export const Category = () => {
 
   return (
     <div>
-    <h2 className="categories-title">Categories</h2>
+      <h2 className="categories-title text-l text-center">Categories</h2>
       <div className="categories">
         {categories.map(({ image, altText, dispatchType, title, id }) => {
           return (
-            <div className="category" key={id}>
+            <Link
+              to="/products"
+              className="category"
+              key={id}
+              onClick={() => productsDispatch({ type: dispatchType })}
+            >
               <img src={image} className="category-image" alt={altText} />
-              <p className="category-title">
-                <Link
-                  to="/products"
-                  className="text-decorations text-white title"
-                  onClick={() => productsDispatch({ type: dispatchType })}
-                >
-                  {title}
-                </Link>
-              </p>
-            </div>
+              <p className="category-title text-white">{title}</p>
+            </Link>
           );
         })}
       </div>

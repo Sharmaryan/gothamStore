@@ -4,12 +4,13 @@ import "./Login.css";
 import { useAuth } from "../../context/auth-context";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { loginReducer } from "../../reducer/login-reducer";
+import { useToast } from "hooks/useToast";
 export const Login = () => {
   const [{ email, password }, dispatch] = useReducer(loginReducer, {
     email: "",
     password: "",
   });
-
+const {showToast} = useToast();
   const { setAuth, auth } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -30,6 +31,7 @@ export const Login = () => {
         setAuth({ ...auth, auth: true, user: foundUser, token: encodedToken });
         localStorage.setItem("token", encodedToken);
         navigate(from, { replace: true });
+        showToast('success', 'Successfully Logged In!');
       }
     } catch (error) {
       console.log(error);
@@ -37,11 +39,10 @@ export const Login = () => {
   };
   const guestHandler = async (e) => {
     e.preventDefault();
-
     try {
       const response = await axios.post("/api/auth/login", {
-        email: "adarshbalika@gmail.com",
-        password: "adarshbalika",
+        email: "Testuser@gmail.com",
+        password: "Testuser",
       });
       const {
         status,
@@ -51,6 +52,7 @@ export const Login = () => {
         setAuth({ ...auth, auth: true, user: foundUser, token: encodedToken });
         localStorage.setItem("token", encodedToken);
         navigate(from, { replace: true });
+        showToast("success", "Successfully Logged In!");
       }
     } catch (error) {
       console.log("something went wrong");
@@ -96,15 +98,7 @@ export const Login = () => {
           />
         </label>
 
-        <div className="password">
-          <label htmlFor="remember">
-            <input name="checkbox" id="remember" type="checkbox" />
-            Remember Me
-          </label>
-          <a href="#" className="text-decorations password-forgot">
-            forgot your password?
-          </a>
-        </div>
+      
         <button className="login-btn" onClick={loginHandler}>
           login
         </button>

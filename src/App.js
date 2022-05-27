@@ -11,6 +11,9 @@ import {
   WishlistPage,
   UserProfile,
 } from "./components/Routes/Routes";
+import { SingleProductPage } from "pages/SingleProductPage/SingleProductPage";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -19,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/products" element={<ProductPage />} />
+        <Route path="/products/:productId" element={<SingleProductPage />} />
         <Route
           path="/cart"
           element={
@@ -46,6 +50,19 @@ function App() {
           }
         />
       </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      
+      <ToastContainer />
     </div>
   );
 }

@@ -3,18 +3,17 @@ import { useAuth } from "./auth-context";
 import axios from "axios";
 import { useCart } from "./cart-context";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "hooks/useToast";
 const WishlistContext = createContext();
 
 const WishlistProvider = ({ children }) => {
   const [wishlistItems, setWishlistItems] = useState([]);
   const [errorMsg, setErrorMsg] = useState(false);
-  const [wishlistError, setWishListError] = useState(false);
-  
   const navigate = useNavigate();
   const { auth } = useAuth();
   const { addToCart, itemsAdded, removeFromCart, incrementQuantity } =
     useCart();
-
+const {showToast} = useToast();
   const wishlistLength = wishlistItems.length;
 
   const addToWishlist = async (product) => {
@@ -29,8 +28,9 @@ const WishlistProvider = ({ children }) => {
           data: { product: product },
         });
         setWishlistItems(response.data.wishlist);
+        showToast("success", "Added to Wishlist!");
       } catch (err) {
-        console.log(err.response);
+        showToast("error", "Something went wrong with server!");
       }
     }
   };
@@ -58,8 +58,9 @@ const WishlistProvider = ({ children }) => {
         headers: { authorization: auth.token },
       });
       setWishlistItems(response.data.wishlist);
+      showToast("warning", "Removed from Wishlist!");
     } catch (err) {
-      console.log(err.response);
+      showToast("error", "Something went wrong with server!");
     }
   };
 
@@ -81,10 +82,7 @@ const WishlistProvider = ({ children }) => {
       addToWishlist(product);
       removeFromCart(product);
     } else {
-      setWishListError(true);
-      setTimeout(() => {
-        setWishListError(false);
-      }, 1000);
+      showToast("warning", "Item is already in the wishlist");
     }
   };
 
@@ -98,7 +96,7 @@ const WishlistProvider = ({ children }) => {
         wishlistLength,
         errorMsg,
         moveToWishlist,
-        wishlistError,
+        
       }}
     >
       {children}
