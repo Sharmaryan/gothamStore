@@ -1,6 +1,7 @@
 import React from "react";
 import "./UserProfile.css";
 import { useAuth } from "context";
+import { useToast } from "hooks/useToast";
 export const UserProfile = () => {
    const {
      auth: {
@@ -9,10 +10,11 @@ export const UserProfile = () => {
      setAuth,
      auth,
    } = useAuth();
-
+ const {showToast} = useToast();
 
   const logout = () => {
     setAuth({ ...auth, user: null, token: "", auth: false });
+    showToast('warning', 'Successfully logged out!');
   };
   return (
     <div className="profile">
