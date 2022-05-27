@@ -8,7 +8,12 @@ export const signupReducer = (state, { type, payload }) => {
       return { ...state, email: payload };
     case "PASSWORD":
       return { ...state, password: payload };
-
+    case "CONFIRM_PASSWORD":
+      return { ...state, confirmPassword: payload };
+    case "PASSWORD_VISIBLITY":
+      return { ...state, passwordType: payload };
+    case "CONFIRM_PASSWORD_VISIBLITY":
+      return { ...state, confirmPasswordType: payload };
     default:
       return { ...state };
   }

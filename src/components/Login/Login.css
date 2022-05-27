@@ -38,3 +38,11 @@
 .account-title {
   color: var(--primary-color);
 }
+.password-input {
+  position: relative;
+}
+.password-icons{
+  position: absolute;
+  right: 8px;
+  top: 8px;
+}

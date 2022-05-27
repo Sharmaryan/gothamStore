@@ -1,6 +1,7 @@
 import React from "react";
-import { CartSummary, CartProduct } from "../../components/Routes/Routes";
+import { CartProduct, CartSummary} from "components";
 import { useCart } from "context/cart-context";
+import { Link } from "react-router-dom";
 import "./CartPage.css";
 
 export const CartPage = () => {
@@ -11,7 +12,16 @@ export const CartPage = () => {
       <div>
         <CartProduct />
       </div>
-      {itemsAdded.length === 0 ? <h1>cart is empty</h1> : <CartSummary />}
+      {itemsAdded.length === 0 ? (
+        <h1 className="text-center">
+          Oh! Such Empty 
+          <Link to="/products" className="wishlist-shop">
+            Shop Now
+          </Link>
+        </h1>
+      ) : (
+        <CartSummary />
+      )}
     </div>
   );
 };

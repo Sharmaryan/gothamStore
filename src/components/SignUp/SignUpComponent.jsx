@@ -7,46 +7,62 @@ import { useAuth } from "../../context/auth-context";
 import { signupReducer } from "../../reducer/signup-reducer";
 import { useToast } from "hooks/useToast";
 export const SignUpComponent = () => {
-  const [{ firstName, lastName, email, password }, dispatch] = useReducer(
-    signupReducer,
+  const [
     {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-    }
-  );
+      firstName,
+      lastName,
+      email,
+      password,
+      confirmPassword,
+      passwordType,
+      confirmPasswordType,
+    },
+    dispatch,
+  ] = useReducer(signupReducer, {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    passwordType: "password",
+    confirmPasswordType: "password",
+  });
 
   const { setAuth, auth } = useAuth();
   const navigate = useNavigate();
-const {showToast} = useToast();
+  const { showToast } = useToast();
   const signupHandler = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(`/api/auth/signup`, {
-        firstName,
-        lastName,
-        email,
-        password,
-      });
-      const {
-        status,
-        data: { encodedToken, createdUser },
-      } = response;
-
-      if (status >= 200 && status <= 299) {
-        setAuth({
-          ...auth,
-          auth: true,
-          user: createdUser,
-          token: encodedToken,
+    if (password !== confirmPassword) {
+      showToast("error", "password din't match");
+    } else {
+      try {
+        const response = await axios.post(`/api/auth/signup`, {
+          firstName,
+          lastName,
+          email,
+          password,
+          confirmPassword,
         });
-        localStorage.setItem("token", encodedToken);
-        navigate("/");
-        showToast("success", "Account Created Successfully!");
+        const {
+          status,
+          data: { encodedToken, createdUser },
+        } = response;
+
+        if (status >= 200 && status <= 299) {
+          setAuth({
+            ...auth,
+            auth: true,
+            user: createdUser,
+            token: encodedToken,
+          });
+          localStorage.setItem("token", encodedToken);
+          navigate("/");
+          showToast("success", "Account Created Successfully!");
+        }
+      } catch (error) {
+        showToast("error", "Something went wrong with server!");
       }
-    } catch (error) {
-      showToast("error", "Something went wrong with server!");
     }
   };
 
@@ -54,7 +70,7 @@ const {showToast} = useToast();
     <div className="signup-section">
       <div className="signup-form">
         <h2 className="signup-form-title">signup</h2>
-        <form>
+        <form onSubmit={signupHandler}>
           <label className="label" htmlFor="fname">
             first name
             <input
@@ -69,6 +85,7 @@ const {showToast} = useToast();
               placeholder="enter your first name"
               className="input"
               value={firstName}
+              required
             />
           </label>
           <label className="label" htmlFor="lname">
@@ -85,6 +102,7 @@ const {showToast} = useToast();
               placeholder="enter your last name"
               className="input"
               value={lastName}
+              required
             />
           </label>
           <label className="label" htmlFor="email">
@@ -101,32 +119,96 @@ const {showToast} = useToast();
               placeholder="xyz@gmail.com"
               className="input"
               value={email}
+              required
             />
           </label>
           <label className="label" htmlFor="password">
             Password
-            <input
-              onChange={(e) =>
-                dispatch({
-                  type: "PASSWORD",
-                  payload: e.target.value,
-                })
-              }
-              type="password"
-              id="password"
-              placeholder="*********"
-              className="input"
-              value={password}
-            />
+            <div className="password-input">
+              <input
+                onChange={(e) =>
+                  dispatch({
+                    type: "PASSWORD",
+                    payload: e.target.value,
+                  })
+                }
+                type={passwordType}
+                id="password"
+                placeholder="*********"
+                className="input"
+                value={password}
+                required
+              />
+
+              {passwordType === "password" ? (
+                <i
+                  className="fa fa-eye-slash password-icons"
+                  onClick={() =>
+                    dispatch({ type: "PASSWORD_VISIBLITY", payload: "text" })
+                  }
+                ></i>
+              ) : (
+                <i
+                  className="fa fa-eye password-icons"
+                  onClick={() =>
+                    dispatch({
+                      type: "PASSWORD_VISIBLITY",
+                      payload: "password",
+                    })
+                  }
+                ></i>
+              )}
+            </div>
+          </label>
+          <label className="label" htmlFor="confirm-password">
+            Confirm Password
+            <div className="password-input">
+              <input
+                onChange={(e) =>
+                  dispatch({
+                    type: "CONFIRM_PASSWORD",
+                    payload: e.target.value,
+                  })
+                }
+                type={confirmPasswordType}
+                id="confirm-password"
+                placeholder="*********"
+                className="input"
+                value={confirmPassword}
+                required
+              />
+
+              {confirmPasswordType === "password" ? (
+                <i
+                  className="fa fa-eye-slash password-icons"
+                  onClick={() =>
+                    dispatch({
+                      type: "CONFIRM_PASSWORD_VISIBLITY",
+                      payload: "text",
+                    })
+                  }
+                ></i>
+              ) : (
+                <i
+                  className="fa fa-eye password-icons"
+                  onClick={() =>
+                    dispatch({
+                      type: "CONFIRM_PASSWORD_VISIBLITY",
+                      payload: "password",
+                    })
+                  }
+                ></i>
+              )}
+            </div>
           </label>
 
           <div className="t-and-c">
             <label className="label" htmlFor="t&c">
-              <input name="t&c" id="t&c" type="checkbox" />I accept terms and
+              <input name="t&c" id="t&c" type="checkbox" required/>I accept terms and
               condition
             </label>
           </div>
-          <button className="signup-btn" onClick={signupHandler}>
+          <button className="signup-btn">
             create new account
           </button>
           <div className="have-account">

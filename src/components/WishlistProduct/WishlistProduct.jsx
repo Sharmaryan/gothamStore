@@ -8,9 +8,9 @@ export const WishlistProduct = () => {
     <div className="wishlist-items">
     
       {wishlistItems.map((item) => {
-        const { image, name, price } = item;
+        const { image, name, price,_id } = item;
         return (
-          <div className="card card-dismiss">
+          <div className="card card-dismiss" key={_id}>
             <div className="card-dismiss-btn">
               <i
                 className="fa fa-times"

@@ -6,11 +6,15 @@ import { useNavigate, Link, useLocation } from "react-router-dom";
 import { loginReducer } from "../../reducer/login-reducer";
 import { useToast } from "hooks/useToast";
 export const Login = () => {
-  const [{ email, password }, dispatch] = useReducer(loginReducer, {
-    email: "",
-    password: "",
-  });
-const {showToast} = useToast();
+  const [{ email, password, passwordType }, dispatch] = useReducer(
+    loginReducer,
+    {
+      email: "",
+      password: "",
+      passwordType: "password",
+    }
+  );
+  const { showToast } = useToast();
   const { setAuth, auth } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -31,7 +35,7 @@ const {showToast} = useToast();
         setAuth({ ...auth, auth: true, user: foundUser, token: encodedToken });
         localStorage.setItem("token", encodedToken);
         navigate(from, { replace: true });
-        showToast('success', 'Successfully Logged In!');
+        showToast("success", "Successfully Logged In!");
       }
     } catch (error) {
       console.log(error);
@@ -62,7 +66,7 @@ const {showToast} = useToast();
   return (
     <div className="login-form">
       <h2 className="login-title">login</h2>
-      <form>
+      <form onSubmit={loginHandler}>
         <label htmlFor="email">
           Email
           <input
@@ -82,24 +86,40 @@ const {showToast} = useToast();
         </label>
         <label htmlFor="password">
           Password
-          <input
-            type="password"
-            id="password"
-            placeholder="*********"
-            className="input"
-            value={password}
-            onChange={(e) =>
-              dispatch({
-                type: "PASSWORD",
-                payload: e.target.value,
-              })
-            }
-            required
-          />
+          <div className="password-input">
+            <input
+              type={passwordType}
+              id="password"
+              placeholder="*********"
+              className="input"
+              value={password}
+              onChange={(e) =>
+                dispatch({
+                  type: "PASSWORD",
+                  payload: e.target.value,
+                })
+              }
+              required
+            />
+            {passwordType === "password" ? (
+              <i
+                className="fa fa-eye-slash password-icons"
+                onClick={() =>
+                  dispatch({ type: "PASSWORD_VISIBLITY", payload: "text" })
+                }
+              ></i>
+            ) : (
+              <i
+                className="fa fa-eye password-icons"
+                onClick={() =>
+                  dispatch({ type: "PASSWORD_VISIBLITY", payload: "password" })
+                }
+              ></i>
+            )}
+          </div>
         </label>
 
-      
-        <button className="login-btn" onClick={loginHandler}>
+        <button className="login-btn">
           login
         </button>
         <button className="login-btn" onClick={guestHandler}>

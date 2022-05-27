@@ -2,16 +2,7 @@ import "./App.css";
 import { Navbar } from "./components/Navbar/Navbar";
 import { RequiresAuth } from "./components/RequiresAuth/RequiresAuth";
 import { Routes, Route } from "react-router-dom";
-import {
-  LandingPage,
-  ProductPage,
-  CartPage,
-  SignUp,
-  LoginPage,
-  WishlistPage,
-  UserProfile,
-} from "./components/Routes/Routes";
-import { SingleProductPage } from "pages/SingleProductPage/SingleProductPage";
+import { LandingPage, ProductPage, SingleProductPage, PageNotFound,CartPage, WishlistPage, SignUp, LoginPage, UserProfile  } from "pages";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 
@@ -23,6 +14,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/products" element={<ProductPage />} />
         <Route path="/products/:productId" element={<SingleProductPage />} />
+        <Route path="*" element={<PageNotFound />} />
         <Route
           path="/cart"
           element={
@@ -61,7 +53,7 @@ function App() {
         draggable
         pauseOnHover
       />
-      
+
       <ToastContainer />
     </div>
   );
