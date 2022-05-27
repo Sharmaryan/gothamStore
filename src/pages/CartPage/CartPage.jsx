@@ -1,5 +1,5 @@
 import React from "react";
-import { CartSummary, CartProduct } from "../../components/Routes/Routes";
+import { CartProduct, CartSummary} from "components";
 import { useCart } from "context/cart-context";
 import "./CartPage.css";
 
