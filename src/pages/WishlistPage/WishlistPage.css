@@ -1,3 +1,6 @@
 .wishlist-page{
     margin-top: 5rem;
 }
+.wishlist-shop{
+    color: var(--primary-color);
+}
