@@ -19,7 +19,7 @@ export const Product = ({ product }) => {
         ₹ {price}
         <span className="rating">
           {star}
-          <i class="fa fa-star "></i>
+          <i className="fa fa-star "></i>
         </span>
       </div>
 

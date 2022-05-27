@@ -24,29 +24,29 @@ export const SingleProductPage = () => {
     <div className="single-product">
       <img src={image} alt="" className="single-product-image " />
 
-      <div class="card card-vertical single-product-card">
-        <p class="card-title single-product-title text-xl">{name}</p>
-        <p class="single-product-category text-m">
+      <div className="card card-vertical single-product-card">
+        <p className="card-title single-product-title text-xl">{name}</p>
+        <p className="single-product-category text-m">
           <span className="single-category">Category:</span>
           <span className="single-category-name">{category}</span>
         </p>
-        <div class="card-price single-category-price">₹{price}</div>
-        <p class="card-desc single-product-desc text-sm">
+        <div className="card-price single-category-price">₹{price}</div>
+        <p className="card-desc single-product-desc text-sm">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea impedit
           quod adipisci facilis? Obcaecati autem odit debitis tempora fugiat
           tenetur? Dolorum numquam voluptate sunt incidunt et odit nulla
           consequatur laboriosam.
         </p>
-        <div class="card-btns">
+        <div className="card-btns">
           {productExists(itemsAdded, singleProduct) ? (
             <Link to="/cart">
-              <button class="card-btn card-vertical-btn category-btns">
+              <button className="card-btn card-vertical-btn category-btns">
                 move to cart
               </button>
             </Link>
           ) : (
             <button
-              class="card-btn card-vertical-btn category-btns"
+              className="card-btn card-vertical-btn category-btns"
               onClick={() => addToCart(singleProduct)}
             >
               add to cart
@@ -55,11 +55,11 @@ export const SingleProductPage = () => {
 
           {productExists(wishlistItems, singleProduct) ? (
             <Link to="/wishlist">
-              <button class="card-btn category-btns">move to wishlist</button>
+              <button className="card-btn category-btns">move to wishlist</button>
             </Link>
           ) : (
             <button
-              class="card-btn category-btns"
+              className="card-btn category-btns"
               onClick={() => addToWishlist(singleProduct)}
             >
               add to wishlist
