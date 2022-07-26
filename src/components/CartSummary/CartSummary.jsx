@@ -1,9 +1,10 @@
 import React from "react";
 import "./CartSummary.css";
 import { useCart } from "context/cart-context";
+import { discountPerBook, calculatePrice, totalCartItems } from "services/cart";
 
 export const CartSummary = () => {
-  const { itemsAdded, calculatePrice, discountPerBook, totalCartItems } =
+  const { itemsAdded } =
     useCart();
   return (
     <div className="price">

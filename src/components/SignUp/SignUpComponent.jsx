@@ -6,6 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth-context";
 import { signupReducer } from "../../reducer/signup-reducer";
 import { useToast } from "hooks/useToast";
+import { signupHandler } from "../../services/auth";
+
 export const SignUpComponent = () => {
   const [
     {
@@ -31,46 +33,28 @@ export const SignUpComponent = () => {
   const { setAuth, auth } = useAuth();
   const navigate = useNavigate();
   const { showToast } = useToast();
-  const signupHandler = async (e) => {
-    e.preventDefault();
-    if (password !== confirmPassword) {
-      showToast("error", "password din't match");
-    } else {
-      try {
-        const response = await axios.post(`/api/auth/signup`, {
-          firstName,
-          lastName,
-          email,
-          password,
-          confirmPassword,
-        });
-        const {
-          status,
-          data: { encodedToken, createdUser },
-        } = response;
-
-        if (status >= 200 && status <= 299) {
-          setAuth({
-            ...auth,
-            auth: true,
-            user: createdUser,
-            token: encodedToken,
-          });
-          localStorage.setItem("token", encodedToken);
-          navigate("/");
-          showToast("success", "Account Created Successfully!");
-        }
-      } catch (error) {
-        showToast("error", "Something went wrong with server!");
-      }
-    }
-  };
-
+ 
   return (
     <div className="signup-section">
       <div className="signup-form">
         <h2 className="signup-form-title">signup</h2>
-        <form onSubmit={signupHandler}>
+        <form
+          onSubmit={(e) =>
+            signupHandler(
+              e,
+              firstName,
+              lastName,
+              email,
+              password,
+              confirmPassword,
+              showToast,
+              setAuth,
+              auth,
+              navigate,
+              axios
+            )
+          }
+        >
           <label className="label" htmlFor="fname">
             first name
             <input
@@ -204,13 +188,11 @@ export const SignUpComponent = () => {
 
           <div className="t-and-c">
             <label className="label" htmlFor="t&c">
-              <input name="t&c" id="t&c" type="checkbox" required/>I accept terms and
-              condition
+              <input name="t&c" id="t&c" type="checkbox" required />I accept
+              terms and condition
             </label>
           </div>
-          <button className="signup-btn">
-            create new account
-          </button>
+          <button className="signup-btn">create new account</button>
           <div className="have-account">
             <Link to="/login" className="text-decorations account">
               already have an account
