@@ -10,3 +10,4 @@ export {Shop} from '../components/Shop/Shop';
 export {SideBar} from '../components/Sidebar/Sidebar';
 export {SignUpComponent} from '../components/SignUp/SignUpComponent';
 export {WishlistProduct} from '../components/WishlistProduct/WishlistProduct';
+export {MobileSearch} from '../components/MobileSearch/MobileSearch';

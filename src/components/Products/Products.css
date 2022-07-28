@@ -1,9 +1,17 @@
 .products {
-  padding: 1rem 0;
-  width: 70%;
+  padding: 1rem 2rem;
+  margin-left: 14rem;
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
   position: absolute;
-  right: 0;
+}
+
+@media screen and (max-width: 792px) {
+.products{
+  margin-top: 20rem;
+  margin-left: revert;
+  align-items: center;
+  justify-content: center;
+}
 }

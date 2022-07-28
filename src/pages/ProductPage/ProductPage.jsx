@@ -1,12 +1,18 @@
 import React from "react";
-import { SideBar } from "../../components/Sidebar/Sidebar";
-import { Products } from "../../components/Products/Products";
-import './ProductsPage.css'
+import { SideBar, Products, MobileSearch } from "../../components";
+import "./ProductsPage.css";
+import { useTitle } from "hooks/useTitle";
 export const ProductPage = () => {
+
+  useTitle('Products | Gotham Store')
+
   return (
-    <div className="product-page">
-      <SideBar />
-      <Products />
+    <div className="product-listing">
+      <MobileSearch />
+      <div>
+        <SideBar />
+        <Products />
+      </div>
     </div>
   );
 };

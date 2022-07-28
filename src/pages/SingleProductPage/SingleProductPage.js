@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./SingelProductPage.css";
-import { useCart, useWishlist } from "context";
+import { useCart, useWishlist, useAuth } from "context";
 import { productExists } from "utility/productExists";
+import { addToCart } from "services/cart";
+import { addToWishlist } from "services/wishlist";
+import { useToast } from "hooks/useToast";
+import { useTitle } from "hooks/useTitle";
+
 export const SingleProductPage = () => {
   const [singleProduct, setSingleProduct] = useState([]);
-
   const { productId } = useParams();
-  const { addToCart, itemsAdded } = useCart();
-  const { addToWishlist, wishlistItems } = useWishlist();
+  const { itemsAdded, setItemsAdded } = useCart();
+  const { auth } = useAuth();
+  const { wishlistItems, setWishlistItems } = useWishlist();
+  const { showToast } = useToast();
+  const navigate = useNavigate();
+  useTitle("Product | Gotham Store");
 
   useEffect(() => {
     (async () => {
@@ -47,7 +55,16 @@ export const SingleProductPage = () => {
           ) : (
             <button
               className="card-btn card-vertical-btn category-btns"
-              onClick={() => addToCart(singleProduct)}
+              onClick={() =>
+                addToCart(
+                  singleProduct,
+                  auth,
+                  navigate,
+                  showToast,
+                  setItemsAdded,
+                  axios
+                )
+              }
             >
               add to cart
             </button>
@@ -55,12 +72,23 @@ export const SingleProductPage = () => {
 
           {productExists(wishlistItems, singleProduct) ? (
             <Link to="/wishlist">
-              <button className="card-btn category-btns">move to wishlist</button>
+              <button className="card-btn category-btns">
+                move to wishlist
+              </button>
             </Link>
           ) : (
             <button
               className="card-btn category-btns"
-              onClick={() => addToWishlist(singleProduct)}
+              onClick={() =>
+                addToWishlist(
+                  singleProduct,
+                  auth,
+                  navigate,
+                  axios,
+                  setWishlistItems,
+                  showToast
+                )
+              }
             >
               add to wishlist
             </button>

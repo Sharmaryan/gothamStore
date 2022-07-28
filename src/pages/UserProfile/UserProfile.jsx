@@ -2,6 +2,7 @@ import React from "react";
 import "./UserProfile.css";
 import { useAuth } from "context";
 import { useToast } from "hooks/useToast";
+import { useTitle } from "hooks/useTitle";
 export const UserProfile = () => {
    const {
      auth: {
@@ -16,6 +17,9 @@ export const UserProfile = () => {
     setAuth({ ...auth, user: null, token: "", auth: false });
     showToast('warning', 'Successfully logged out!');
   };
+
+  useTitle("Profile | Gotham Store");
+
   return (
     <div className="profile">
       <div className="card card-simple">
