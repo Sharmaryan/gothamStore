@@ -42,6 +42,7 @@ background-color: var(--secondary-color);
 }
 .btn-shop{
   color: var(--primary-color);
+  font-size: 1rem;
 }
 
 @media screen and (max-width: 792px) {
@@ -49,3 +50,11 @@ background-color: var(--secondary-color);
    display: none;
  }
 }
+
+
+@media screen and (max-width: 340px) {
+ .fas-icons{
+  padding: 4px;
+ }
+}
+

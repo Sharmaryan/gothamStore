@@ -39,7 +39,7 @@ export const Navbar = () => {
           <li className="menu-items fas-icons">
             <button className="btn btn-link">
               <Link to={"/products"} className="btn-text-decoration btn-shop ">
-                shop now
+                shop
               </Link>
             </button>
           </li>
