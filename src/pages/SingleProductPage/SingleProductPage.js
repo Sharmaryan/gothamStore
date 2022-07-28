@@ -7,6 +7,7 @@ import { productExists } from "utility/productExists";
 import { addToCart } from "services/cart";
 import { addToWishlist } from "services/wishlist";
 import { useToast } from "hooks/useToast";
+import { useTitle } from "hooks/useTitle";
 
 export const SingleProductPage = () => {
   const [singleProduct, setSingleProduct] = useState([]);
@@ -16,6 +17,7 @@ export const SingleProductPage = () => {
   const { wishlistItems, setWishlistItems } = useWishlist();
   const { showToast } = useToast();
   const navigate = useNavigate();
+  useTitle("Product | Gotham Store");
 
   useEffect(() => {
     (async () => {

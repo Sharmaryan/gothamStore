@@ -3,8 +3,10 @@ import { WishlistProduct } from "components/WishlistProduct/WishlistProduct";
 import "./WishlistPage.css";
 import { useWishlist } from "context";
 import { Link } from "react-router-dom";
+import { useTitle } from "hooks/useTitle";
 export const WishlistPage = () => {
   const { wishlistItems } = useWishlist();
+  useTitle("Wishlist | Gotham Store");
   return (
     <div className="wishlist-page">
       <WishlistProduct />
