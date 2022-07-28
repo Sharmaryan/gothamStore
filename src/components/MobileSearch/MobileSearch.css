@@ -1,0 +1,22 @@
+.mobile-search {
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+  background-color: var(--secondary-color);
+  top: 4rem;
+  height: 5rem;
+  display: none;
+}
+.search-bar-mobile {
+  border: 2px solid var(--primary-color);
+  padding: 5px;
+  display: none;
+  width: 100%;
+  border-radius: 2rem;
+}
+
+@media screen and (max-width: 792px) {
+  .search-bar-mobile, .mobile-search {
+    display: block;
+  }
+}

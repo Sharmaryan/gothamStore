@@ -1,6 +1,23 @@
-.product-page {
-  display: flex;
-  gap: 1rem;
-  position: relative;
+.product-listing{  
   top: 100px;
+  gap: 1rem;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+
+.fa-filter{
+  position: fixed;
+  left: 1rem;
+  top: 7rem;
+  display: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  z-index: 12;
+}
+
+@media screen and (max-width: 792px) {
+ .fa-filter{
+    display: block;
+ }
 }

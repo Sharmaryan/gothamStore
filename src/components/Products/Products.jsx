@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Product } from "../Product/Product";
+import { Product } from "components";
 import { useProduct } from "../../context/product-context";
 import {
   filterByCategory,

@@ -1,6 +1,5 @@
 .cart-card {
   display: flex;
-  width: 30rem;
   text-transform: capitalize;
   margin-bottom: 1rem;
   background-color: var(--primary-color);
@@ -70,6 +69,6 @@
   margin: 6px 0;
   text-transform: capitalize;
   border: none;
-  width: 9rem;
+  width: 100%;
   cursor: pointer;
 }

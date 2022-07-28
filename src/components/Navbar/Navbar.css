@@ -43,3 +43,9 @@ background-color: var(--secondary-color);
 .btn-shop{
   color: var(--primary-color);
 }
+
+@media screen and (max-width: 792px) {
+ .search{
+   display: none;
+ }
+}
