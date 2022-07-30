@@ -1,11 +1,24 @@
 import React from "react";
 import "./CartSummary.css";
-import { useCart } from "context/cart-context";
-import { discountPerBook, calculatePrice, totalCartItems } from "services/cart";
-
+import { useCart, useAuth } from "context";
+import { discountPerBook, calculatePrice, totalCartItems, removeCart } from "services/cart";
+import usePayment from "hooks/usePayment";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 export const CartSummary = () => {
-  const { itemsAdded } =
-    useCart();
+  const redirect = () => {
+    removeCart(axios, auth, setItemsAdded);
+    navigate("/thank-you");
+  };
+
+  const navigate = useNavigate();
+  const { itemsAdded, setItemsAdded } = useCart();
+  const { auth } = useAuth();
+  const showRazorPay = usePayment(
+    calculatePrice(itemsAdded) + 99 - discountPerBook(itemsAdded),
+    auth.user,
+    redirect
+  );
   return (
     <div className="price">
       <div className="price-heading">price details</div>
@@ -33,7 +46,9 @@ export const CartSummary = () => {
         you will save ₹{discountPerBook(itemsAdded)} on this order
       </div>
       <div className="price-button">
-        <button className="price-btn">place order</button>
+        <button className="price-btn" onClick={showRazorPay}>
+          place order
+        </button>
       </div>
     </div>
   );

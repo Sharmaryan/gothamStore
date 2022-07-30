@@ -125,6 +125,22 @@ const removeFromCart = async (
   }
 };
 
+const removeCart = async (
+  axios,
+  auth,
+  setItemsAdded,
+) => {
+  try {
+    const response = await axios.delete(`/api/user/cart`, {
+      headers: { authorization: auth.token },
+    });
+    setItemsAdded(response.data.cart);
+  } catch (err) {
+    console.log(err);
+    showToast("error", "Something went wrong with server!");
+  }
+};
+
 export {
   addToCart,
   removeFromCart,
@@ -134,4 +150,5 @@ export {
   calculatePrice,
   totalCartItems,
   moveToCart,
+  removeCart
 };

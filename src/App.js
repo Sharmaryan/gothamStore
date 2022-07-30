@@ -2,7 +2,7 @@ import "./App.css";
 import { Navbar } from "./components/Navbar/Navbar";
 import { RequiresAuth } from "./components/RequiresAuth/RequiresAuth";
 import { Routes, Route } from "react-router-dom";
-import { LandingPage, ProductPage, SingleProductPage, PageNotFound,CartPage, WishlistPage, SignUp, LoginPage, UserProfile, AddressPage  } from "pages";
+import { LandingPage, ProductPage, SingleProductPage, PageNotFound,CartPage, WishlistPage, SignUp, LoginPage, UserProfile, AddressPage, ThankYou  } from "pages";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 
@@ -44,9 +44,17 @@ function App() {
         <Route
           path="/address"
           element={
-            // <RequiresAuth>
+            <RequiresAuth>
               <AddressPage />
-            // </RequiresAuth>
+             </RequiresAuth>
+          }
+        />
+        <Route
+          path="/thank-you"
+          element={
+            <RequiresAuth>
+              <ThankYou />
+             </RequiresAuth>
           }
         />
       </Routes>
