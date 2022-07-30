@@ -1,6 +1,6 @@
 import React from "react";
 import "./CartSummary.css";
-import { useCart, useAuth } from "context";
+import { useCart, useAuth, useAddress } from "context";
 import { discountPerBook, calculatePrice, totalCartItems, removeCart } from "services/cart";
 import usePayment from "hooks/usePayment";
 import { useNavigate } from "react-router-dom";
@@ -13,6 +13,7 @@ export const CartSummary = () => {
 
   const navigate = useNavigate();
   const { itemsAdded, setItemsAdded } = useCart();
+  const {selectedAddress, address} =  useAddress();
   const { auth } = useAuth();
   const showRazorPay = usePayment(
     calculatePrice(itemsAdded) + 99 - discountPerBook(itemsAdded),
@@ -46,9 +47,15 @@ export const CartSummary = () => {
         you will save ₹{discountPerBook(itemsAdded)} on this order
       </div>
       <div className="price-button">
-        <button className="price-btn" onClick={showRazorPay}>
-          place order
-        </button>
+        {address.filter((item) => item.addressId === selectedAddress).length > 0 ? (
+          <button className="price-btn" onClick={showRazorPay}>
+            place order
+          </button>
+        ) : (
+          <button className="disable-btn" disabled={true}>
+            place order
+          </button>
+        )}
       </div>
     </div>
   );
