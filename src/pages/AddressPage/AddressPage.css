@@ -1,0 +1,34 @@
+.addresses{
+    margin-top: 5rem;
+    padding: 2rem 1rem;
+}
+.addresses-new{
+    background-color: var(--primary-color);
+    padding: 5px 8px;
+    text-transform: capitalize;
+    color: var(--secondary-color);
+    border: none;
+}
+.addresses-desc{
+    margin-top: 2rem;
+    font-size: 2rem;
+}
+.addresses-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.single-address{
+    border: 3px solid var(--primary-color);
+    width: 20rem;
+}
+.single-address-desc{
+    text-transform: capitalize;
+    padding: 3px 4rem;
+}
+/* .single-address-edit{
+
+}
+.single-address-delete{
+
+} */

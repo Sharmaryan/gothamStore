@@ -7,3 +7,5 @@ export { WishlistPage } from "../pages/WishlistPage/WishlistPage";
 export { UserProfile } from "../pages/UserProfile/UserProfile";
 export { PageNotFound } from "../pages/PageNotFound/PageNotFound";
 export {SingleProductPage} from '../pages/SingleProductPage/SingleProductPage';
+export {AddressPage} from '../pages/AddressPage/AddressPage';
+export {ThankYou} from '../pages/ThankYou/ThankYou';
