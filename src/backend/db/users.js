@@ -15,5 +15,17 @@ export const users = [
     password: "Testuser",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    address: [
+      {
+        addressId: uuid(),
+        name: "Tester",
+        street: "somewhere on earth",
+        city: "Ghaziabad",
+        state: "Uttar Pradesh",
+        country: "India",
+        phone: "1234567890",
+        pincode: "201003",
+      },
+    ],
   },
 ];

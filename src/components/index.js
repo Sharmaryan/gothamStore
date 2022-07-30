@@ -11,3 +11,4 @@ export {SideBar} from '../components/Sidebar/Sidebar';
 export {SignUpComponent} from '../components/SignUp/SignUpComponent';
 export {WishlistProduct} from '../components/WishlistProduct/WishlistProduct';
 export {MobileSearch} from '../components/MobileSearch/MobileSearch';
+export {AddressModal} from '../components/AddressModal/AddressModal';
