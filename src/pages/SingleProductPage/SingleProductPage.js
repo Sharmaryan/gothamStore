@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import "./SingelProductPage.css";
 import { useCart, useWishlist, useAuth } from "context";
@@ -18,6 +18,7 @@ export const SingleProductPage = () => {
   const { wishlistItems, setWishlistItems } = useWishlist();
   const { showToast } = useToast();
   const navigate = useNavigate();
+  const location = useLocation();
   useTitle("Product | Gotham Store");
 
   useEffect(() => {
@@ -66,7 +67,8 @@ export const SingleProductPage = () => {
                     navigate,
                     showToast,
                     setItemsAdded,
-                    axios
+                    axios,
+                    location
                   )
                 }
               >
@@ -90,7 +92,8 @@ export const SingleProductPage = () => {
                     navigate,
                     axios,
                     setWishlistItems,
-                    showToast
+                    showToast,
+                    location
                   )
                 }
               >

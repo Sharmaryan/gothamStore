@@ -24,7 +24,7 @@ const loginHandler = async (
       setAuth({ ...auth, auth: true, user: foundUser, token: encodedToken });
       localStorage.setItem("token", encodedToken);
 
-      navigate(from || '/products', { replace: true });
+      navigate(from || '/', { replace: true });
       showToast("success", "Successfully Logged In!");
     }
   } catch (error) {
@@ -53,7 +53,7 @@ const guestHandler = async (
     if (status >= 200 && status <= 299) {
       setAuth({ ...auth, auth: true, user: foundUser, token: encodedToken });
       localStorage.setItem("token", encodedToken);
-      navigate(from || '/products', { replace: true });
+      navigate(from || '/', { replace: true });
       showToast("success", "Successfully Logged In!");
     }
   } catch (error) {

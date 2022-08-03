@@ -9,9 +9,8 @@ import "./CartProduct.css";
 import axios from "axios";
 
 export const CartProduct = () => {
-  const { itemsAdded } = useCart();
+  const { itemsAdded, setItemsAdded, setIsDisable } = useCart();
   const { wishlistItems, setWishlistItems } = useWishlist();
-  const { setItemsAdded, setIsDisable } = useCart();
   const { auth } = useAuth();
   const { showToast } = useToast();
   const navigate = useNavigate();

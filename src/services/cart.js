@@ -84,10 +84,11 @@ const addToCart = async (
   navigate,
   showToast,
   setItemsAdded,
-  axios
+  axios,
+  location
 ) => {
   if (!auth.user) {
-    navigate("/login");
+     navigate("/login", { state: { from: location }, replace: true });
   } else {
     try {
       const response = await axios({
