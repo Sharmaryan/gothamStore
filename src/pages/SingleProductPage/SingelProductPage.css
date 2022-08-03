@@ -47,6 +47,12 @@
     color: var(--primary-color);
 }
 
+.loading{
+  margin: 0 auto;
+  margin-top: 5rem;
+  width: 18rem;
+}
+
 @media screen and (max-width: 450px) {
 .single-product{
   flex-direction: column;
