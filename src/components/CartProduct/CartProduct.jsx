@@ -28,7 +28,7 @@ export const CartProduct = () => {
                 <p className="cart-head">{name}</p>
                 <div className="cart-real-discount">
                   <div className="cart-real-price">{price}</div>
-                  <div className="cart-discount-price">₹{discount}</div>
+                  <div className="cart-discount-price">{discount}% discount</div>
                 </div>
 
                 <div className="cart-quantity">
