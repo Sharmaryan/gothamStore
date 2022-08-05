@@ -2,6 +2,14 @@
   margin-top: 5rem;
   padding: 2rem 1rem;
 }
+
+.addressess-back{
+color: var(--primary-color);
+margin: 5px 0;
+font-size: 1.4rem;
+cursor: pointer;
+}
+
 .addresses-new {
   background-color: var(--primary-color);
   padding: 5px 8px;
