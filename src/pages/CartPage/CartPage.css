@@ -7,14 +7,14 @@
 }
 
 .address {
-  margin-top: 5rem;
-  margin-bottom: 3rem;
-  border: 3px solid var(--primary-color);
   height: 5rem;
+  width: 20rem;
+  margin: 5rem auto;
 }
 .address-name{
     margin-bottom: 1rem;
     text-transform: capitalize;
+    color: var(--primary-color);
 }
 .address-new {
   text-decoration: none;
