@@ -9,12 +9,16 @@
 .fa-filter{
   position: fixed;
   left: 1rem;
-  top: 7rem;
+  top: 8rem;
   display: none;
   font-size: 1.1rem;
   cursor: pointer;
   z-index: 12;
+  color: var(--primary-color);
+  font-size: 1.3rem;
 }
+
+
 
 @media screen and (max-width: 792px) {
  .fa-filter{

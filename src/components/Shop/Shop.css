@@ -1,17 +1,27 @@
-.container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column ;
-  height: 90vh;
-  background: url('https://static.toiimg.com/thumb/67214972.cms?width=680&height=512&imgsize=4344222') no-repeat;
-  background-size: cover;
-  opacity: 0.8;
-
+.shop{
+  position: relative;
 }
-.container-title{
+
+.shop-image{
+  width: 100%;
+  margin: 0; 
+}
+.shop-desc{
+  position: absolute;
+  top: 13rem;
+  left: 4rem;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+.shop-heading{
   color: var(--primary-color);
-  font-size: 3rem;
-  font-family: 'Courier New', Courier, monospace;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
 }
-
+.shop-btn{
+  color: var(--secondary-color);
+  text-decoration: none;
+  background-color: var(--primary-color);
+  text-transform: capitalize;
+  padding: 5px 8px;
+}

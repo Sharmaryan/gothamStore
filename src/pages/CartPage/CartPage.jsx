@@ -11,35 +11,36 @@ export const CartPage = () => {
   useTitle("Cart | Gotham Store");
   return (
     <div>
-      <div className="address">
-        <div className="address-name">
-        Address:{address
-            .filter((item) => item.addressId === selectedAddress)
-            .map((item) => (
-              <div key={item.addressId}>
-                {item.city}, {item.street}, {item.state},{item.pincode}
-              </div>
-            ))}
+      <h1 className="cart-length">Cart({itemsAdded.length})</h1>
+      {itemsAdded.length > 0 ? (
+        <div className="address">
+          <div className="address-name">
+            Address:
+            {address
+              .filter((item) => item.addressId === selectedAddress)
+              .map((item) => (
+                <div key={item.addressId}>
+                  {item.city}, {item.street}, {item.state},{item.pincode}
+                </div>
+              ))}
+          </div>
+          <Link to="/address" className="address-new">
+            add address
+          </Link>
         </div>
-        <Link to="/address" className="address-new">
-          add address
-        </Link>
-      </div>
-
+      ) : (
+        <h1 className="text-center">
+          Oh! Such Empty
+          <Link to="/products" className="wishlist-shop">
+            Shop Now
+          </Link>
+        </h1>
+      )}
       <div className="cart-page">
         <div>
           <CartProduct />
         </div>
-        {itemsAdded.length === 0 ? (
-          <h1 className="text-center">
-            Oh! Such Empty
-            <Link to="/products" className="wishlist-shop">
-              Shop Now
-            </Link>
-          </h1>
-        ) : (
-          <CartSummary />
-        )}
+        {itemsAdded.length > 0 && <CartSummary />}
       </div>
     </div>
   );

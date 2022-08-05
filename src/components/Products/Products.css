@@ -6,12 +6,15 @@
   gap: 2rem;
   position: absolute;
 }
+.products-loading {
+  color: var(--primary-color);
+}
 
 @media screen and (max-width: 792px) {
-.products{
-  margin-top: 20rem;
-  margin-left: revert;
-  align-items: center;
-  justify-content: center;
-}
+  .products {
+    margin-top: 4rem;
+    margin-left: revert;
+    align-items: center;
+    justify-content: center;
+  }
 }

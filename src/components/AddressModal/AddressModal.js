@@ -9,7 +9,7 @@ export const AddressModal = () => {
     useAddress();
   const { auth } = useAuth();
   const {userAddress, inputDispatch} = useModal();
-
+ 
   useEffect(() => {
     inputDispatch({ type: "HANDLE_EDIT", payload: currentEditedItem });
   }, [currentEditedItem]);
@@ -46,6 +46,14 @@ export const AddressModal = () => {
       console.error(err);
     }
   };
+
+  const inputValuesEntered =
+    userAddress.name &&
+    userAddress.street &&
+    userAddress.city &&
+    userAddress.country &&
+    userAddress.phone &&
+    userAddress.pincode;
 
   return (
     <div className="address-modal">
@@ -115,14 +123,30 @@ export const AddressModal = () => {
         />
         <div className="modal-btns">
           {currentEditedItem ? (
-            <button
-              className="modal-add modal-btn"
-              onClick={() => modalUpdateHandler(currentEditedItem.addressId)}
-            >
-              update
+            inputValuesEntered ? (
+              <button
+                className="modal-add modal-btn"
+                onClick={() => modalUpdateHandler(currentEditedItem.addressId)}
+              >
+                update
+              </button>
+            ) : (
+              <button
+                className="modal-btn modal-disable-btn"
+                disabled={!inputValuesEntered}
+              >
+                update
+              </button>
+            )
+          ) : inputValuesEntered ? (
+            <button className="modal-add modal-btn" onClick={modalAddHandler}>
+              add
             </button>
           ) : (
-            <button className="modal-add modal-btn" onClick={modalAddHandler}>
+            <button
+              className="modal-btn modal-disable-btn"
+              disabled={!inputValuesEntered}
+            >
               add
             </button>
           )}

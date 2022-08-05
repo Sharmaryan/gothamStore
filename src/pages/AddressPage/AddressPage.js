@@ -2,12 +2,14 @@ import axios from "axios";
 import { AddressModal } from "components";
 import { useAddress, useAuth, useModal } from "context";
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./AddressPage.css";
 export const AddressPage = () => {
   const { auth } = useAuth();
   const { addressDispatch, address, isModalOpen, selectedAddress } =
     useAddress();
     const { inputDispatch } = useModal();
+    const navigate = useNavigate();
   useEffect(() => {
     (async () => {
       try {
@@ -33,7 +35,6 @@ export const AddressPage = () => {
   };
 
   const deleteAddressHandler = async (addressId) => {
-    console.log(addressId)
     try {
       const response = await axios.delete(`/api/user/address/${addressId}`, {
         headers: { authorization: auth.token },
@@ -52,15 +53,25 @@ export const AddressPage = () => {
     addressDispatch({ type: "EDIT_ADDRESS", payload : data });
   };
 
+  const backButtonHandler = () => {
+    navigate(-1);
+  }
+
+
   return (
     <div className="addresses">
       {isModalOpen && <AddressModal />}
+      <div className="addressess-back" onClick={backButtonHandler}>
+      
+        <i className="fa fa-angle-left "></i>
+        back
+      </div>
       <button className="addresses-new" onClick={newAddressHandler}>
         add new address
       </button>
       <div className="addresses-desc">Addresses</div>
       <div className="addresses-list">
-        {address.map(( data) => {
+        {address.map((data) => {
           const {
             name,
             street,
@@ -87,7 +98,7 @@ export const AddressPage = () => {
               <p className="single-address-desc">pincode : {pincode}</p>
               <button
                 className="single-address-edit"
-                onClick={() => editAddressHandler( data)}
+                onClick={() => editAddressHandler(data)}
               >
                 edit
               </button>

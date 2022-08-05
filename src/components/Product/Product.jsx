@@ -1,7 +1,7 @@
 import { useAuth, useWishlist, useCart } from "context";
 import React from "react";
 import "./Product.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { productExists } from "utility/productExists";
 import { addToCart } from "services/cart";
 import { addToWishlist } from "services/wishlist";
@@ -14,6 +14,7 @@ export const Product = ({ product }) => {
   const { auth } = useAuth();
   const { showToast } = useToast();
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <div className="card card-vertical ">
@@ -46,7 +47,8 @@ export const Product = ({ product }) => {
                 navigate,
                 showToast,
                 setItemsAdded,
-                axios
+                axios,
+                location
               )
             }
           >
@@ -69,7 +71,8 @@ export const Product = ({ product }) => {
                 navigate,
                 axios,
                 setWishlistItems,
-                showToast
+                showToast,
+                location
               )
             }
           >

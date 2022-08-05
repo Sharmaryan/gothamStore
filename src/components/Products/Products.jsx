@@ -59,7 +59,7 @@ export const Products = () => {
 
   return (
     <div className="products">
-      {loading && <h1>Loading...</h1>}
+      {loading && <h1 className="products-loading">Loading...</h1>}
       {searchedProduct?.map((product) => (
         <Product product={product} key={product._id} />
       ))}

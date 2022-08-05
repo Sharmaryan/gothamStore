@@ -9,10 +9,10 @@ export const WishlistPage = () => {
   useTitle("Wishlist | Gotham Store");
   return (
     <div className="wishlist-page">
+      <h1 className="mt-4 text-center wishlist-length">Wishlist({wishlistItems.length})</h1>
       <WishlistProduct />
-
       {wishlistItems.length === 0 && (
-        <h1 className="text-center">
+        <h1 className="text-center mt-4">
           Oh! Such Empty 
           <Link to="/products" className="wishlist-shop">
             Shop Now

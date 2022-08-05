@@ -1,6 +1,6 @@
 const discountPerBook = (itemsAdded) => {
   return [...itemsAdded].reduce(
-    (acc, curr) => Number(acc) + curr.discount * curr.qty,
+    (acc, curr) => Number(acc) + ((curr.price * curr.qty) * curr.discount)/100,
     0
   );
 };
@@ -84,10 +84,11 @@ const addToCart = async (
   navigate,
   showToast,
   setItemsAdded,
-  axios
+  axios,
+  location
 ) => {
   if (!auth.user) {
-    navigate("/login");
+     navigate("/login", { state: { from: location }, replace: true });
   } else {
     try {
       const response = await axios({

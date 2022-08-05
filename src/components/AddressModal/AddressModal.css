@@ -36,3 +36,8 @@
   background-color: var(--primary-color);
   color: var(--secondary-color);
 }
+.modal-disable-btn{
+  background-color: rgb(8, 8, 8);
+  border: none;
+  /* color: rgba(3, 90, 148, 0.644); */
+}
