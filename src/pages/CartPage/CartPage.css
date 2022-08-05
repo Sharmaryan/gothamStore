@@ -2,6 +2,14 @@
   display: flex;
   justify-content: center;
 }
+
+.cart-length{
+  width: 10rem;
+  margin: 0 auto;
+  margin-top: 5rem;
+  color: var(--primary-color);
+}
+
 .alert {
   position: fixed;
 }

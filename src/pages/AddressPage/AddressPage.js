@@ -64,7 +64,7 @@ export const AddressPage = () => {
       {isModalOpen && <AddressModal />}
       <div className="addressess-back" onClick={backButtonHandler}>
       
-        <i class="fa fa-angle-left "></i>
+        <i className="fa fa-angle-left "></i>
         back
       </div>
       <button className="addresses-new" onClick={newAddressHandler}>
