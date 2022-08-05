@@ -45,9 +45,11 @@ function ProductReducer(state, action) {
           selfhelp: false,
           business: false,
           biography: false,
+          spirtual: false,
         },
         rating: null,
         range: 0,
+        searchProduct: "",
       };
     default:
       return state;

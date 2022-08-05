@@ -39,7 +39,7 @@ export const Navbar = () => {
           <li className="menu-items fas-icons">
             <button className="btn btn-link">
               <Link to={"/products"} className="btn-text-decoration btn-shop ">
-                shop
+                <i className="fa fa-shopping-bag"></i>
               </Link>
             </button>
           </li>
@@ -52,7 +52,7 @@ export const Navbar = () => {
           ) : (
             <li className="menu-items">
               <Link to="/login" className="text-decorations text-white">
-                login
+                <i className="fa fa-sign-in"></i>
               </Link>
             </li>
           )}

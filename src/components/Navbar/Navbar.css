@@ -11,6 +11,7 @@
 }
 .nav-logo{
     font-weight: 700;
+    font-size: 2rem;
     font-family: 'Montserrat', sans-serif;
 }
 .text-decorations{
@@ -25,7 +26,7 @@ background-color: var(--secondary-color);
     color: var(--primary-color);
 }
 .menu-items{
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
 }
