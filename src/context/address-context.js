@@ -17,7 +17,6 @@ const addressReducer = (state, action) => {
     case "UPDATE_ADDRESS":
       return { ...state, isModalOpen: false, address : action.payload };
     case "OPEN_MODAL":
-      console.log(state,action)
       return {
         ...state,
         isModalOpen: true,

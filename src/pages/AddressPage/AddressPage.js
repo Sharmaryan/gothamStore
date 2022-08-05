@@ -35,7 +35,6 @@ export const AddressPage = () => {
   };
 
   const deleteAddressHandler = async (addressId) => {
-    console.log(addressId)
     try {
       const response = await axios.delete(`/api/user/address/${addressId}`, {
         headers: { authorization: auth.token },
