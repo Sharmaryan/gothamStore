@@ -29,7 +29,7 @@ export const CartPage = () => {
           </Link>
         </div>
       ) : (
-        <h1 className="text-center my-3">
+        <h1 className="text-center">
           Oh! Such Empty
           <Link to="/products" className="wishlist-shop">
             Shop Now
