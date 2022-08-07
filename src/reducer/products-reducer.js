@@ -48,7 +48,7 @@ function ProductReducer(state, action) {
           spirtual: false,
         },
         rating: null,
-        range: 0,
+        range: 500,
         searchProduct: "",
       };
     default:
