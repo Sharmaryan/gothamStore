@@ -5,7 +5,11 @@ const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const [itemsAdded, setItemsAdded] = useState([]);
-  const [isDisable, setIsDisable] = useState(false);
+  const [disableCart, setDisableCart] = useState(false);
+  const [incrementHandle, setIncrementHandle] = useState(false);
+  const [decrementHandle, setDecrementHandle] = useState(false);
+
+
   const cartLength = itemsAdded.length;
   const { auth } = useAuth();
   useEffect(() => {
@@ -30,8 +34,12 @@ const CartProvider = ({ children }) => {
         itemsAdded,
         setItemsAdded,
         cartLength,
-        isDisable,
-        setIsDisable,
+        disableCart,
+        setDisableCart,
+        incrementHandle,
+        setIncrementHandle,
+        decrementHandle,
+        setDecrementHandle,
       }}
     >
       {children}

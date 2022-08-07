@@ -1,5 +1,5 @@
 import { useAuth, useWishlist, useCart } from "context";
-import React from "react";
+import React, { useState } from "react";
 import "./Product.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { productExists } from "utility/productExists";
@@ -8,13 +8,19 @@ import { addToWishlist } from "services/wishlist";
 import { useToast } from "hooks/useToast";
 import axios from "axios";
 export const Product = ({ product }) => {
-  const { itemsAdded, setItemsAdded } = useCart();
-  const { wishlistItems, setWishlistItems } = useWishlist();
+  const { itemsAdded, setItemsAdded, disableCart, setDisableCart } = useCart();
+  const {
+    wishlistItems,
+    setWishlistItems,
+    disableWishlist,
+    setDisableWishlist,
+  } = useWishlist();
   const { image, name, price, star, _id } = product;
   const { auth } = useAuth();
   const { showToast } = useToast();
   const navigate = useNavigate();
   const location = useLocation();
+
 
   return (
     <div className="card card-vertical ">
@@ -37,6 +43,8 @@ export const Product = ({ product }) => {
               Move to Cart
             </Link>
           </button>
+        ) : disableCart ? (
+          <button className="card-btn card-vertical-btn">add to cart</button>
         ) : (
           <button
             className="card-btn card-vertical-btn"
@@ -48,6 +56,7 @@ export const Product = ({ product }) => {
                 showToast,
                 setItemsAdded,
                 axios,
+                setDisableCart,
                 location
               )
             }
@@ -61,6 +70,8 @@ export const Product = ({ product }) => {
               Move to Wishlist
             </Link>
           </button>
+        ) : disableWishlist ? (
+          <button className="card-btn">add to wishlist</button>
         ) : (
           <button
             className="card-btn"
@@ -72,6 +83,7 @@ export const Product = ({ product }) => {
                 axios,
                 setWishlistItems,
                 showToast,
+                setDisableWishlist,
                 location
               )
             }

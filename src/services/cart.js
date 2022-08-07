@@ -25,27 +25,52 @@ const moveToCart = (
   showToast,
   setItemsAdded,
   setWishlistItems,
-  axios
+  axios,
+  setDisableCart,
+  setIncrementHandle,
+  setDisableRemoveFromWishlist
 ) => {
   const itemPresent = itemsAdded.some((item) => item._id === product._id);
   if (!itemPresent) {
-    addToCart(product, auth, navigate, showToast, setItemsAdded, axios);
+    addToCart(
+      product,
+      auth,
+      navigate,
+      showToast,
+      setItemsAdded,
+      axios,
+      setDisableCart
+    );
   }
   if (itemPresent) {
-    incrementQuantity(product, auth, setItemsAdded, axios);
+    incrementQuantity(product, auth, setItemsAdded, axios, setIncrementHandle);
   }
-  removeFromWishlist(product, axios, auth, setWishlistItems, showToast);
+  removeFromWishlist(
+    product,
+    axios,
+    auth,
+    setWishlistItems,
+    showToast,
+    setDisableRemoveFromWishlist
+  );
 };
 
-const incrementQuantity = async (product, auth, setItemsAdded, axios) => {
+const incrementQuantity = async (
+  product,
+  auth,
+  setItemsAdded,
+  axios,
+  setIncrementHandle
+) => {
   const productId = product._id;
+  setIncrementHandle(true);
   try {
     const response = await axios.post(
       `/api/user/cart/${productId}`,
       { action: { type: "increment" } },
       { headers: { authorization: auth.token } }
     );
-
+    setIncrementHandle(false);
     setItemsAdded(response.data.cart);
   } catch (err) {
     console.log(err);
@@ -56,14 +81,22 @@ const decrementQuantity = async (
   auth,
   setItemsAdded,
   axios,
-  setIsDisable,
   removeFromCart,
-  showToast
+  showToast,
+  setDecrementHandle,
+  setDisableRemoveCart
 ) => {
-  setIsDisable(true);
+  setDecrementHandle(true);
   const productId = product._id;
   if (product.qty === 1) {
-    removeFromCart(product, axios, auth, setItemsAdded, showToast);
+    removeFromCart(
+      product,
+      axios,
+      auth,
+      setItemsAdded,
+      showToast,
+      setDisableRemoveCart
+    );
   }
   try {
     const response = await axios.post(
@@ -71,7 +104,7 @@ const decrementQuantity = async (
       { action: { type: "decrement" } },
       { headers: { authorization: auth.token } }
     );
-    setIsDisable(false);
+    setDecrementHandle(false);
     setItemsAdded(response.data.cart);
   } catch (err) {
     console.log(err.response);
@@ -85,11 +118,13 @@ const addToCart = async (
   showToast,
   setItemsAdded,
   axios,
+  setDisableCart,
   location
 ) => {
   if (!auth.user) {
      navigate("/login", { state: { from: location }, replace: true });
   } else {
+    setDisableCart(true)
     try {
       const response = await axios({
         method: "post",
@@ -99,6 +134,7 @@ const addToCart = async (
       });
       showToast("success", "Added to Cart!");
       setItemsAdded(response.data.cart);
+      setDisableCart(false);
     } catch (err) {
       console.log(err);
       showToast("error", "Something went wrong with server!");
@@ -111,15 +147,18 @@ const removeFromCart = async (
   axios,
   auth,
   setItemsAdded,
-  showToast
+  showToast,
+  setDisableRemoveCart
 ) => {
   const productId = product._id;
+  setDisableRemoveCart(true);
   try {
     const response = await axios.delete(`/api/user/cart/${productId}`, {
       headers: { authorization: auth.token },
     });
     setItemsAdded(response.data.cart);
     showToast("warning", "Removed from Cart!");
+    setDisableRemoveCart(false);
   } catch (err) {
     console.log(err);
     showToast("error", "Something went wrong with server!");

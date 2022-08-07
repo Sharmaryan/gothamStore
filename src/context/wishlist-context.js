@@ -6,6 +6,9 @@ const WishlistContext = createContext();
 const WishlistProvider = ({ children }) => {
   const [wishlistItems, setWishlistItems] = useState([]);
   const [errorMsg, setErrorMsg] = useState(false);
+  const [disableWishlist, setDisableWishlist] = useState(false);
+  const [disableRemoveFromWishlist, setDisableRemoveFromWishlist] =
+    useState(false);
   const { auth } = useAuth();
   const wishlistLength = wishlistItems.length;
 
@@ -31,6 +34,10 @@ const WishlistProvider = ({ children }) => {
         wishlistLength,
         errorMsg,
         setWishlistItems,
+        disableWishlist,
+        setDisableWishlist,
+        disableRemoveFromWishlist,
+        setDisableRemoveFromWishlist,
       }}
     >
       {children}
