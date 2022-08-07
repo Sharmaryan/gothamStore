@@ -34,6 +34,10 @@ export const SignUpComponent = () => {
   const navigate = useNavigate();
   const { showToast } = useToast();
  
+  const guestCredentialsHandler = () => {
+    dispatch({ type: "GUEST_CREDENTIALS" });
+  }
+
   return (
     <div className="signup-section">
       <div className="signup-form">
@@ -193,6 +197,7 @@ export const SignUpComponent = () => {
             </label>
           </div>
           <button className="signup-btn">create new account</button>
+          <button className="signup-btn" onClick={guestCredentialsHandler}>fill guest credentials</button>
           <div className="have-account">
             <Link to="/login" className="text-decorations account">
               already have an account
