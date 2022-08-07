@@ -5,12 +5,13 @@ const addToWishlist = async (
   axios,
   setWishlistItems,
   showToast,
-  location
+  setDisableWishlist,
+  location,
 ) => {
   if (!auth.user) {
-    
-     navigate("/login", { state: { from: location }, replace: true });
+    navigate("/login", { state: { from: location }, replace: true });
   } else {
+    setDisableWishlist(true);
     try {
       const response = await axios({
         method: "post",
@@ -20,6 +21,7 @@ const addToWishlist = async (
       });
       showToast("success", "Added to Wishlist!");
       setWishlistItems(response.data.wishlist);
+      setDisableWishlist(false);
     } catch (err) {
       console.log(err);
       showToast("error", "Something went wrong with server!");
@@ -32,14 +34,17 @@ const removeFromWishlist = async (
   axios,
   auth,
   setWishlistItems,
-  showToast
+  showToast,
+  setDisableRemoveFromWishlist
 ) => {
   const productId = product._id;
+  setDisableRemoveFromWishlist(true);
   try {
     const response = await axios.delete(`/api/user/wishlist/${productId}`, {
       headers: { authorization: auth.token },
     });
     setWishlistItems(response.data.wishlist);
+    setDisableRemoveFromWishlist(false);
     showToast("warning", "Removed from Wishlist!");
   } catch (err) {
     showToast("error", "Something went wrong with server!");
@@ -55,12 +60,29 @@ const moveToWishlist = (
   navigate,
   axios,
   setWishlistItems,
-  setItemsAdded
+  setItemsAdded,
+  setDisableWishlist,
+  setDisableRemoveCart
 ) => {
   const itemPresent = wishlistItems.some((item) => item._id === product._id);
   if (!itemPresent) {
-    addToWishlist(product, auth, navigate, axios, setWishlistItems, showToast);
-    removeFromCart(product, axios, auth, setItemsAdded, showToast);
+    addToWishlist(
+      product,
+      auth,
+      navigate,
+      axios,
+      setWishlistItems,
+      showToast,
+      setDisableWishlist
+    );
+    removeFromCart(
+      product,
+      axios,
+      auth,
+      setItemsAdded,
+      showToast,
+      setDisableRemoveCart
+    );
   } else {
     showToast("warning", "Item is already in the wishlist");
   }

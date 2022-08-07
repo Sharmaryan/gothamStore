@@ -22,7 +22,7 @@ const ProductProvider = ({ children }) => {
       spirtual: false,
     },
     rating: null,
-    range: 0,
+    range: 500,
     searchProduct:''
   });
 

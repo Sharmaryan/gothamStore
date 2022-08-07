@@ -31,7 +31,7 @@ export const SideBar = () => {
           className="slider"
           step="100"
           min="100"
-          max="1000"
+          max="500"
           value={range}
           onChange={(e) =>
             productsDispatch({ type: "RANGE", payload: e.target.value })

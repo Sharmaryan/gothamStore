@@ -14,6 +14,8 @@ export const signupReducer = (state, { type, payload }) => {
       return { ...state, passwordType: payload };
     case "CONFIRM_PASSWORD_VISIBLITY":
       return { ...state, confirmPasswordType: payload };
+    case "GUEST_CREDENTIALS":
+      return {...state, firstName:'Aryan', lastName:'Sharma', email:'panditaryan.as@gmail.com', password:'dontknow', confirmPassword:'dontknow',}
     default:
       return { ...state };
   }
