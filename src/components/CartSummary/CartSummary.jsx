@@ -16,7 +16,7 @@ export const CartSummary = () => {
   const {selectedAddress, address} =  useAddress();
   const { auth } = useAuth();
   const showRazorPay = usePayment(
-    calculatePrice(itemsAdded) + 99 - discountPerBook(itemsAdded).toFixed(2),
+    calculatePrice(itemsAdded) + 99 - parseInt(discountPerBook(itemsAdded)),
     auth.user,
     redirect
   );
@@ -32,7 +32,7 @@ export const CartSummary = () => {
       <div className="price-desc">
         <div className="price-desc-desc">discount</div>
         <div className="price-desc-price">
-          -₹{discountPerBook(itemsAdded).toFixed(2)}
+          -₹{parseInt(discountPerBook(itemsAdded))}
         </div>
       </div>
       <div className="price-desc">
@@ -45,11 +45,11 @@ export const CartSummary = () => {
           ₹
           {calculatePrice(itemsAdded) +
             99 -
-            discountPerBook(itemsAdded).toFixed(2)}
+            parseInt(discountPerBook(itemsAdded))}
         </div>
       </div>
       <div className="price-saving">
-        you will save ₹{discountPerBook(itemsAdded).toFixed(2)} on this order
+        you will save ₹{parseInt(discountPerBook(itemsAdded))} on this order
       </div>
       <div className="price-button">
         {address.filter((item) => item.addressId === selectedAddress).length >
